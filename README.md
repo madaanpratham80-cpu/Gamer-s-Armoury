@@ -6,7 +6,7 @@
 
 * **Nexus Search Engine:** Integration of the **RAWG API** to fetch real-time system requirements for 500,000+ games. 
 * **Preset Matchmaker:** A logic engine where users select a graphics preset (**Low, Medium, High, Ultra**) to see compatible hardware. 
-* **The "User Rig" Profile:** A dedicated section to save and compare current hardware specs (e.g., **ASUS TUF A15** or **MacBook Pro M4**) using **Local Storage**.
+* **The "User Rig" Profile:** A dedicated section to save and compare current hardware specs using **Local Storage**.
 * **Armoury-UX Interface:** A dark-themed, responsive dashboard featuring neon accents, performance "Gauges," and a modular layout. 
 * **Optimization Vault:** Leverages the **GitHub API** to find community-driven optimization mods and performance scripts for searched titles. 
 
