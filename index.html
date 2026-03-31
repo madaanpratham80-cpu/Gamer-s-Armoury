@@ -2,14 +2,314 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamer's Armoury</title>
-    <link rel="stylesheet" href="home.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamer's Armoury — Home</title>
+  <meta name="description" content="Gamer's Armoury dashboard — track your gaming laptop specs, search Windows PC games, and monitor hardware performance." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;900&display=swap" />
+  <link rel="stylesheet" href="home.css" />
 </head>
 
 <body>
 
-</body>
+  <!-- app wrapper -->
+  <div class="app" id="app">
 
+    <!-- =============================================
+         SIDEBAR
+         ============================================= -->
+    <aside class="sidebar" id="sidebar">
+
+      <!-- logo -->
+      <div class="sb-logo">
+        <div class="sb-logo-icon">GA</div>
+        <div class="sb-logo-text">Gamer's<br>Armoury</div>
+      </div>
+
+      <!-- hamburger close (mobile) -->
+      <button class="sb-close-btn" id="sb-close-btn" onclick="closeSidebar()">&#10005;</button>
+
+      <!-- nav -->
+      <nav class="sb-nav">
+
+        <a class="sb-link active" id="nav-home" href="#" onclick="handleNav('nav-home'); return false;">
+          <span class="sb-icon">&#8962;</span>
+          <span class="sb-label">Home</span>
+        </a>
+
+        <a class="sb-link" id="nav-devices" href="#" onclick="handleNav('nav-devices'); openModal(); return false;">
+          <span class="sb-icon">&#128187;</span>
+          <span class="sb-label">Devices</span>
+        </a>
+
+        <div class="sb-section">Playground</div>
+
+        <a class="sb-link" id="nav-aura" href="#" onclick="handleNav('nav-aura'); return false;">
+          <span class="sb-icon">&#10024;</span>
+          <span class="sb-label">Aura Sync</span>
+        </a>
+
+        <a class="sb-link" id="nav-wallpaper" href="#" onclick="handleNav('nav-wallpaper'); return false;">
+          <span class="sb-icon">&#128247;</span>
+          <span class="sb-label">Aura Wallpaper</span>
+        </a>
+
+        <div class="sb-section">Assistant</div>
+
+        <a class="sb-link" id="nav-macros" href="#" onclick="handleNav('nav-macros'); return false;">
+          <span class="sb-icon">&#9000;</span>
+          <span class="sb-label">Macros</span>
+        </a>
+
+        <a class="sb-link" id="nav-scenarios" href="#" onclick="handleNav('nav-scenarios'); return false;">
+          <span class="sb-icon">&#128203;</span>
+          <span class="sb-label">Scenario Profiles</span>
+        </a>
+
+        <a class="sb-link" id="nav-games" href="#" onclick="handleNav('nav-games'); scrollToGames(); return false;">
+          <span class="sb-icon">&#127918;</span>
+          <span class="sb-label">Game Library</span>
+        </a>
+
+        <a class="sb-link" id="nav-display" href="#" onclick="handleNav('nav-display'); return false;">
+          <span class="sb-icon">&#128444;</span>
+          <span class="sb-label">Display Settings</span>
+        </a>
+
+        <div class="sb-section">Contents</div>
+
+        <a class="sb-link" id="nav-content" href="#" onclick="handleNav('nav-content'); return false;">
+          <span class="sb-icon">&#128225;</span>
+          <span class="sb-label">Content Platform</span>
+        </a>
+
+        <a class="sb-link" id="nav-promo" href="#" onclick="handleNav('nav-promo'); return false;">
+          <span class="sb-icon">&#127873;</span>
+          <span class="sb-label">Promotion</span>
+        </a>
+
+      </nav>
+
+      <!-- bottom links -->
+      <div class="sb-bottom">
+        <a class="sb-link" id="nav-features" href="#" onclick="handleNav('nav-features'); return false;">
+          <span class="sb-icon">&#128230;</span>
+          <span class="sb-label">Feature Library</span>
+        </a>
+        <a class="sb-link" id="nav-user" href="#" onclick="handleNav('nav-user'); return false;">
+          <span class="sb-icon">&#128100;</span>
+          <span class="sb-label">User Center</span>
+        </a>
+        <a class="sb-link" id="nav-settings" href="#" onclick="handleNav('nav-settings'); return false;">
+          <span class="sb-icon">&#9881;</span>
+          <span class="sb-label">Settings</span>
+        </a>
+      </div>
+
+    </aside>
+    <!-- dark overlay for mobile sidebar -->
+    <div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
+
+    <!-- =============================================
+         MAIN CONTENT
+         ============================================= -->
+    <main class="main" id="main">
+
+      <!-- top bar -->
+      <div class="topbar">
+        <button class="topbar-hamburger" id="topbar-hamburger" onclick="openSidebar()" aria-label="Open menu">&#9776;</button>
+        <h1 class="topbar-title">Home</h1>
+        <div class="topbar-actions">
+          <div class="topbar-btn" title="AI Mode">&#65319;&#65316;</div>
+          <div class="topbar-btn" title="Screenshot">&#128247;</div>
+          <div class="topbar-btn" title="Sound">&#128266;</div>
+          <div class="topbar-btn" title="Phone">&#128241;</div>
+        </div>
+      </div>
+
+      <!-- scrollable page body -->
+      <div class="page-body" id="page-body">
+
+        <!-- ---- DEVICES SECTION ---- -->
+        <section class="section-block" id="section-devices">
+
+          <div class="section-header">
+            <span class="section-stripe">&#9619;&#9619;&#9619;</span>
+            <span class="section-title">Devices (1)</span>
+            <a class="section-view-all" href="#" onclick="return false;">View All &#8743;</a>
+          </div>
+
+          <!-- rig display area: shows + button or saved rig card -->
+          <div class="rig-area" id="rig-area">
+
+            <!-- shown when no rig is saved -->
+            <div class="no-rig" id="no-rig-view" onclick="openModal()">
+              <div class="add-btn-circle">
+                <span class="add-plus">+</span>
+              </div>
+              <div class="no-rig-text">
+                <p class="no-rig-title">No Devices Connected</p>
+                <p class="no-rig-sub">Click <strong>+</strong> to add your gaming laptop and see hardware stats.</p>
+              </div>
+            </div>
+
+            <!-- shown after rig is saved (JS populates this) -->
+            <div class="rig-card" id="rig-card" style="display:none;">
+              <!-- JS fills this in -->
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ---- GAME LIBRARY SECTION ---- -->
+        <section class="section-block" id="section-games">
+
+          <div class="section-header">
+            <span class="section-stripe">&#9619;&#9619;&#9619;</span>
+            <span class="section-title">Game Library</span>
+          </div>
+
+          <!-- search bar -->
+          <div class="search-row">
+            <input
+              class="search-input"
+              id="game-search-input"
+              type="text"
+              placeholder="Search Windows PC games... (e.g. Cyberpunk, Valorant)"
+              autocomplete="off"
+            />
+            <button class="search-btn" id="game-search-btn" onclick="doSearch()">
+              &#128269; Search
+            </button>
+          </div>
+
+          <!-- results grid -->
+          <div class="games-grid" id="game-results">
+            <p class="games-placeholder">Search for a game above to check compatibility with your setup &#127918;</p>
+          </div>
+
+          <!-- expanded game detail panel -->
+          <div class="game-detail-panel" id="game-detail-box">
+            <!-- JS fills in when a card is clicked -->
+          </div>
+
+        </section>
+
+      </div>
+      <!-- end page-body -->
+
+    </main>
+
+    <!-- =============================================
+         RIGHT STATS PANEL
+         ============================================= -->
+    <aside class="stats-panel" id="stats-panel">
+
+      <!-- header -->
+      <div class="stats-section-header">
+        <span class="section-stripe">&#9619;&#9619;&#9619;</span>
+        <span class="stats-section-title">System Usage</span>
+      </div>
+
+      <!-- stats content — JS fills this or shows placeholder -->
+      <div id="stats-content">
+        <div class="stats-placeholder" id="stats-placeholder">
+          <div class="stats-ph-icon">&#128164;</div>
+          <p>No setup selected yet.</p>
+          <p class="stats-ph-sub">Click <strong>+</strong> to add<br>your laptop.</p>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+  <!-- end app -->
+
+
+  <!-- =============================================
+       RIG PICKER MODAL
+       ============================================= -->
+  <div class="modal-overlay" id="rig-modal" onclick="onModalOverlayClick(event)">
+    <div class="modal-box" id="modal-box">
+
+      <h2 class="modal-heading">ADD YOUR SETUP</h2>
+      <p class="modal-sub">Select your laptop model and spec variant.</p>
+
+      <!-- laptop picker -->
+      <label class="modal-label">1 &mdash; Select Laptop Model</label>
+      <div class="custom-drop" id="model-drop">
+        <button class="drop-trigger" id="model-trigger" type="button" onclick="toggleDrop('model-drop')">
+          <span id="model-trigger-text">-- Pick your laptop --</span>
+          <span class="drop-caret">&#9660;</span>
+        </button>
+        <div class="drop-menu" id="model-menu">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <!-- variant picker (hidden until laptop picked) -->
+      <div id="variant-section" style="display:none;">
+        <label class="modal-label">2 &mdash; Select Variant (RAM / GPU / Storage)</label>
+        <div class="custom-drop" id="variant-drop">
+          <button class="drop-trigger" id="variant-trigger" type="button" onclick="toggleDrop('variant-drop')">
+            <span id="variant-trigger-text">-- Pick a variant --</span>
+            <span class="drop-caret">&#9660;</span>
+          </button>
+          <div class="drop-menu" id="variant-menu">
+            <!-- populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- action buttons -->
+      <div class="modal-actions">
+        <button class="btn-save" id="save-rig-btn" onclick="saveRig()">&#128190; Save to Armoury</button>
+        <button class="btn-cancel" id="cancel-btn" onclick="closeModal()">Cancel</button>
+      </div>
+
+      <button class="btn-clear" id="clear-btn" onclick="clearRig(); closeModal();">&#128465; Remove Saved Setup</button>
+
+    </div>
+  </div>
+
+
+  <!-- mobile bottom nav -->
+  <nav class="bottom-nav" id="bottom-nav">
+    <a class="bnav-item active" id="bnav-home" href="#" onclick="setBottomActive('bnav-home'); return false;">
+      <span>&#8962;</span><small>Home</small>
+    </a>
+    <a class="bnav-item" id="bnav-rig" href="#" onclick="setBottomActive('bnav-rig'); openModal(); return false;">
+      <span>&#128187;</span><small>Setup</small>
+    </a>
+    <a class="bnav-item" id="bnav-games" href="#" onclick="setBottomActive('bnav-games'); scrollToGames(); return false;">
+      <span>&#127918;</span><small>Games</small>
+    </a>
+    <a class="bnav-item" id="bnav-stats" href="#" onclick="setBottomActive('bnav-stats'); openStatsSheet(); return false;">
+      <span>&#128202;</span><small>Stats</small>
+    </a>
+  </nav>
+
+  <!-- mobile stats sheet -->
+  <div class="stats-sheet" id="stats-sheet">
+    <div class="stats-sheet-pull"></div>
+    <div class="stats-sheet-inner" id="stats-sheet-inner">
+      <div class="stats-placeholder">
+        <div class="stats-ph-icon">&#128164;</div>
+        <p>No setup selected yet.</p>
+        <p class="stats-ph-sub">Add a laptop first!</p>
+      </div>
+    </div>
+  </div>
+  <div class="stats-sheet-overlay" id="stats-sheet-overlay" onclick="closeStatsSheet()"></div>
+
+  <!-- toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- scripts -->
+  <script src="main.js"></script>
+
+</body>
 </html>
