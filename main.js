@@ -15,8 +15,8 @@ let pickedVariantIdx = "";
 
 // active operating mode removed — not needed for this project
 
-// RAWG API key (free public key)
-var RAWG_KEY = "3e6d4c3e9d6f435bb956e1a26dadc43c";
+// RAWG API key — renewed March 2026
+var RAWG_KEY = "dd3a12f2f07e482493bbd21cb8e62a0e";
 
 // RAWG platform id 4 = PC / Windows
 var PC_PLATFORM = 4;
@@ -337,6 +337,501 @@ var laptops = [
     ],
   },
 
+  // ---- LEGACY: GTX & RTX 3000 SERIES ----
+  {
+    id: 32,
+    brand: "ASUS",
+    name: "ASUS TUF Gaming A15 (2021)",
+    variants: [
+      { label: "Ryzen 5 4600H / GTX 1650 / 8 GB / 512 GB SSD",     cpu: "AMD Ryzen 5 4600H",   gpu: "NVIDIA GTX 1650",     ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 45, gpuScore: 40, ramScore: 53, storeScore: 60 },
+      { label: "Ryzen 7 4800H / GTX 1660 Ti / 16 GB / 512 GB SSD",  cpu: "AMD Ryzen 7 4800H",   gpu: "NVIDIA GTX 1660 Ti",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 52, gpuScore: 50, ramScore: 73, storeScore: 60 },
+      { label: "Ryzen 7 5800H / RTX 3060 / 16 GB / 512 GB SSD",     cpu: "AMD Ryzen 7 5800H",   gpu: "NVIDIA RTX 3060",     ram: "16 GB", storage: "512 GB SSD",  cpuScore: 65, gpuScore: 65, ramScore: 73, storeScore: 60 },
+    ],
+  },
+  {
+    id: 33,
+    brand: "ASUS",
+    name: "ASUS ROG Strix G15 (2021/2022)",
+    variants: [
+      { label: "Ryzen 7 5800H / RTX 3050 Ti / 16 GB / 512 GB SSD",  cpu: "AMD Ryzen 7 5800H",   gpu: "NVIDIA RTX 3050 Ti",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 65, gpuScore: 55, ramScore: 73, storeScore: 60 },
+      { label: "Ryzen 9 5900HX / RTX 3070 / 16 GB / 1 TB SSD",      cpu: "AMD Ryzen 9 5900HX",  gpu: "NVIDIA RTX 3070",     ram: "16 GB", storage: "1 TB SSD",    cpuScore: 72, gpuScore: 75, ramScore: 73, storeScore: 78 },
+      { label: "Ryzen 9 6900HX / RTX 3080 / 32 GB / 1 TB SSD",      cpu: "AMD Ryzen 9 6900HX",  gpu: "NVIDIA RTX 3080",     ram: "32 GB", storage: "1 TB SSD",    cpuScore: 78, gpuScore: 82, ramScore: 92, storeScore: 78 },
+    ],
+  },
+  {
+    id: 34,
+    brand: "Lenovo",
+    name: "Lenovo Legion 5 (2021)",
+    variants: [
+      { label: "Ryzen 5 5600H / GTX 1650 / 8 GB / 512 GB SSD",      cpu: "AMD Ryzen 5 5600H",   gpu: "NVIDIA GTX 1650",     ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 50, gpuScore: 40, ramScore: 53, storeScore: 60 },
+      { label: "Ryzen 7 5800H / RTX 3050 / 8 GB / 512 GB SSD",      cpu: "AMD Ryzen 7 5800H",   gpu: "NVIDIA RTX 3050",     ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 65, gpuScore: 52, ramScore: 53, storeScore: 60 },
+      { label: "Ryzen 7 5800H / RTX 3060 / 16 GB / 1 TB SSD",       cpu: "AMD Ryzen 7 5800H",   gpu: "NVIDIA RTX 3060",     ram: "16 GB", storage: "1 TB SSD",    cpuScore: 65, gpuScore: 65, ramScore: 73, storeScore: 78 },
+      { label: "Ryzen 7 5800H / RTX 3070 / 16 GB / 1 TB SSD",       cpu: "AMD Ryzen 7 5800H",   gpu: "NVIDIA RTX 3070",     ram: "16 GB", storage: "1 TB SSD",    cpuScore: 65, gpuScore: 75, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 35,
+    brand: "Lenovo",
+    name: "Lenovo IdeaPad Gaming 3 (2021/2022)",
+    variants: [
+      { label: "i5-11300H / GTX 1650 / 8 GB / 512 GB SSD",          cpu: "Intel Core i5-11300H",  gpu: "NVIDIA GTX 1650",   ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 46, gpuScore: 40, ramScore: 53, storeScore: 60 },
+      { label: "Ryzen 5 5600H / RTX 3050 / 8 GB / 512 GB SSD",      cpu: "AMD Ryzen 5 5600H",     gpu: "NVIDIA RTX 3050",   ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 50, gpuScore: 52, ramScore: 53, storeScore: 60 },
+      { label: "Ryzen 7 6800H / RTX 3050 Ti / 16 GB / 512 GB SSD",  cpu: "AMD Ryzen 7 6800H",     gpu: "NVIDIA RTX 3050 Ti",ram: "16 GB", storage: "512 GB SSD",  cpuScore: 70, gpuScore: 55, ramScore: 73, storeScore: 60 },
+    ],
+  },
+  {
+    id: 36,
+    brand: "Acer",
+    name: "Acer Nitro 5 (2020-2022)",
+    variants: [
+      { label: "i5-10300H / GTX 1650 / 8 GB / 256 GB SSD",          cpu: "Intel Core i5-10300H",  gpu: "NVIDIA GTX 1650",   ram: "8 GB",  storage: "256 GB SSD",  cpuScore: 42, gpuScore: 40, ramScore: 53, storeScore: 50 },
+      { label: "i5-11400H / RTX 3050 / 16 GB / 512 GB SSD",         cpu: "Intel Core i5-11400H",  gpu: "NVIDIA RTX 3050",   ram: "16 GB", storage: "512 GB SSD",  cpuScore: 52, gpuScore: 52, ramScore: 73, storeScore: 60 },
+      { label: "Ryzen 7 5800H / RTX 3060 / 16 GB / 1 TB SSD",       cpu: "AMD Ryzen 7 5800H",     gpu: "NVIDIA RTX 3060",   ram: "16 GB", storage: "1 TB SSD",    cpuScore: 65, gpuScore: 65, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 37,
+    brand: "HP",
+    name: "HP Pavilion Gaming 15",
+    variants: [
+      { label: "Ryzen 5 4600H / GTX 1650 / 8 GB / 512 GB SSD",      cpu: "AMD Ryzen 5 4600H",   gpu: "NVIDIA GTX 1650",     ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 45, gpuScore: 40, ramScore: 53, storeScore: 60 },
+      { label: "i5-10300H / GTX 1660 Ti / 8 GB / 512 GB SSD",       cpu: "Intel Core i5-10300H",gpu: "NVIDIA GTX 1660 Ti",  ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 42, gpuScore: 50, ramScore: 53, storeScore: 60 },
+    ],
+  },
+  {
+    id: 38,
+    brand: "HP",
+    name: "HP Omen 15 (2021)",
+    variants: [
+      { label: "Ryzen 7 5800H / RTX 3060 / 16 GB / 512 GB SSD",     cpu: "AMD Ryzen 7 5800H",   gpu: "NVIDIA RTX 3060",     ram: "16 GB", storage: "512 GB SSD",  cpuScore: 65, gpuScore: 65, ramScore: 73, storeScore: 60 },
+      { label: "i7-10750H / RTX 3070 / 16 GB / 1 TB SSD",           cpu: "Intel Core i7-10750H",gpu: "NVIDIA RTX 3070",     ram: "16 GB", storage: "1 TB SSD",    cpuScore: 55, gpuScore: 75, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 39,
+    brand: "Dell",
+    name: "Dell G15 (2021/2022)",
+    variants: [
+      { label: "i5-11260H / RTX 3050 / 8 GB / 512 GB SSD",          cpu: "Intel Core i5-11260H",  gpu: "NVIDIA RTX 3050",   ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 48, gpuScore: 52, ramScore: 53, storeScore: 60 },
+      { label: "Ryzen 7 5800H / RTX 3060 / 16 GB / 1 TB SSD",       cpu: "AMD Ryzen 7 5800H",     gpu: "NVIDIA RTX 3060",   ram: "16 GB", storage: "1 TB SSD",    cpuScore: 65, gpuScore: 65, ramScore: 73, storeScore: 78 },
+      { label: "i7-12700H / RTX 3070 Ti / 16 GB / 1 TB SSD",        cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3070 Ti",ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 78, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 40,
+    brand: "MSI",
+    name: "MSI GF63 Thin (2020/2021)",
+    variants: [
+      { label: "i5-10300H / GTX 1650 Max-Q / 8 GB / 256 GB SSD",    cpu: "Intel Core i5-10300H",  gpu: "NVIDIA GTX 1650 Max-Q", ram: "8 GB", storage: "256 GB SSD", cpuScore: 42, gpuScore: 35, ramScore: 53, storeScore: 50 },
+      { label: "i7-11800H / RTX 3050 Ti / 16 GB / 512 GB SSD",      cpu: "Intel Core i7-11800H",  gpu: "NVIDIA RTX 3050 Ti",    ram: "16 GB", storage: "512 GB SSD", cpuScore: 70, gpuScore: 55, ramScore: 73, storeScore: 60 },
+    ],
+  },
+  {
+    id: 41,
+    brand: "MSI",
+    name: "MSI Katana GF66 (2021)",
+    variants: [
+      { label: "i7-11800H / RTX 3060 / 16 GB / 512 GB SSD",         cpu: "Intel Core i7-11800H",  gpu: "NVIDIA RTX 3060",   ram: "16 GB", storage: "512 GB SSD",  cpuScore: 70, gpuScore: 65, ramScore: 73, storeScore: 60 },
+    ],
+  },
+
+  // ---- ASUS ADDITIONAL (2021-2025) ----
+  {
+    id: 42,
+    brand: "ASUS",
+    name: "ASUS ROG Strix G17 (2022)",
+    variants: [
+      { label: "Ryzen 7 6800H / RTX 3060 / 16 GB / 512 GB SSD",    cpu: "AMD Ryzen 7 6800H",   gpu: "NVIDIA RTX 3060",    ram: "16 GB", storage: "512 GB SSD",  cpuScore: 70, gpuScore: 65, ramScore: 73, storeScore: 60 },
+      { label: "Ryzen 7 6800H / RTX 3070 Ti / 16 GB / 1 TB SSD",   cpu: "AMD Ryzen 7 6800H",   gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 70, gpuScore: 78, ramScore: 73, storeScore: 78 },
+      { label: "Ryzen 9 6900HX / RTX 3080 Ti / 32 GB / 1 TB SSD",  cpu: "AMD Ryzen 9 6900HX",  gpu: "NVIDIA RTX 3080 Ti", ram: "32 GB", storage: "1 TB SSD",    cpuScore: 78, gpuScore: 87, ramScore: 92, storeScore: 78 },
+    ],
+  },
+  {
+    id: 43,
+    brand: "ASUS",
+    name: "ASUS ROG Strix SCAR 17 (2022/2023)",
+    variants: [
+      { label: "Ryzen 9 6900HX / RTX 3080 Ti / 32 GB / 1 TB SSD",  cpu: "AMD Ryzen 9 6900HX",  gpu: "NVIDIA RTX 3080 Ti", ram: "32 GB", storage: "1 TB SSD",    cpuScore: 78, gpuScore: 87, ramScore: 92, storeScore: 78 },
+      { label: "Ryzen 9 7945HX / RTX 4080 / 32 GB / 2 TB SSD",     cpu: "AMD Ryzen 9 7945HX",  gpu: "NVIDIA RTX 4080",    ram: "32 GB", storage: "2 TB SSD",    cpuScore: 90, gpuScore: 94, ramScore: 92, storeScore: 95 },
+      { label: "Ryzen 9 7945HX / RTX 4090 / 32 GB / 2 TB SSD",     cpu: "AMD Ryzen 9 7945HX",  gpu: "NVIDIA RTX 4090",    ram: "32 GB", storage: "2 TB SSD",    cpuScore: 91, gpuScore: 98, ramScore: 92, storeScore: 95 },
+    ],
+  },
+  {
+    id: 44,
+    brand: "ASUS",
+    name: "ASUS ROG Zephyrus Duo 16 (2022/2023)",
+    variants: [
+      { label: "Ryzen 9 6900HX / RTX 3080 Ti / 32 GB / 2 TB SSD",  cpu: "AMD Ryzen 9 6900HX",  gpu: "NVIDIA RTX 3080 Ti", ram: "32 GB", storage: "2 TB SSD",    cpuScore: 78, gpuScore: 87, ramScore: 92, storeScore: 95 },
+      { label: "Ryzen 9 7945HX / RTX 4090 / 64 GB / 4 TB SSD",     cpu: "AMD Ryzen 9 7945HX",  gpu: "NVIDIA RTX 4090",    ram: "64 GB", storage: "4 TB SSD",    cpuScore: 91, gpuScore: 98, ramScore: 98, storeScore: 99 },
+    ],
+  },
+  {
+    id: 45,
+    brand: "ASUS",
+    name: "ASUS TUF Dash F15 (2021/2022)",
+    variants: [
+      { label: "i7-11370H / RTX 3050 Ti / 8 GB / 512 GB SSD",  cpu: "Intel Core i7-11370H",  gpu: "NVIDIA RTX 3050 Ti", ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 58, gpuScore: 55, ramScore: 53, storeScore: 60 },
+      { label: "i7-12650H / RTX 3060 / 16 GB / 512 GB SSD",    cpu: "Intel Core i7-12650H",  gpu: "NVIDIA RTX 3060",    ram: "16 GB", storage: "512 GB SSD",  cpuScore: 72, gpuScore: 65, ramScore: 73, storeScore: 60 },
+      { label: "i7-12650H / RTX 3070 / 16 GB / 1 TB SSD",      cpu: "Intel Core i7-12650H",  gpu: "NVIDIA RTX 3070",    ram: "16 GB", storage: "1 TB SSD",    cpuScore: 72, gpuScore: 75, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 46,
+    brand: "ASUS",
+    name: "ASUS ROG Flow X13 (2022/2023)",
+    variants: [
+      { label: "Ryzen 9 6900HS / RTX 3050 Ti / 16 GB / 512 GB SSD",  cpu: "AMD Ryzen 9 6900HS",  gpu: "NVIDIA RTX 3050 Ti", ram: "16 GB", storage: "512 GB SSD",  cpuScore: 76, gpuScore: 55, ramScore: 73, storeScore: 60 },
+      { label: "Ryzen 9 7940HS / RTX 4060 / 16 GB / 512 GB SSD",     cpu: "AMD Ryzen 9 7940HS",  gpu: "NVIDIA RTX 4060",    ram: "16 GB", storage: "512 GB SSD",  cpuScore: 84, gpuScore: 72, ramScore: 73, storeScore: 60 },
+    ],
+  },
+  {
+    id: 47,
+    brand: "ASUS",
+    name: "ASUS ROG Flow Z13 (2023/2024)",
+    variants: [
+      { label: "i9-13900H / RTX 4060 / 16 GB / 512 GB SSD",  cpu: "Intel Core i9-13900H",  gpu: "NVIDIA RTX 4060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 86, gpuScore: 72, ramScore: 73, storeScore: 60 },
+      { label: "i9-13900H / RTX 4070 / 16 GB / 1 TB SSD",    cpu: "Intel Core i9-13900H",  gpu: "NVIDIA RTX 4070",  ram: "16 GB", storage: "1 TB SSD",    cpuScore: 86, gpuScore: 83, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 48,
+    brand: "ASUS",
+    name: "ASUS ROG Zephyrus M16 (2022/2023)",
+    variants: [
+      { label: "i7-12700H / RTX 3070 Ti / 16 GB / 1 TB SSD",      cpu: "Intel Core i7-12700H",    gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 78, ramScore: 73, storeScore: 78 },
+      { label: "i9-12900H / RTX 3080 Ti / 32 GB / 2 TB SSD",      cpu: "Intel Core i9-12900H",    gpu: "NVIDIA RTX 3080 Ti", ram: "32 GB", storage: "2 TB SSD",    cpuScore: 88, gpuScore: 87, ramScore: 92, storeScore: 95 },
+      { label: "Core Ultra 7 155H / RTX 4090 / 32 GB / 2 TB SSD", cpu: "Intel Core Ultra 7 155H", gpu: "NVIDIA RTX 4090",    ram: "32 GB", storage: "2 TB SSD",    cpuScore: 82, gpuScore: 98, ramScore: 92, storeScore: 95 },
+    ],
+  },
+  {
+    id: 49,
+    brand: "ASUS",
+    name: "ASUS TUF Gaming A17 (2022/2023)",
+    variants: [
+      { label: "Ryzen 7 6800H / RTX 3060 / 8 GB / 512 GB SSD",    cpu: "AMD Ryzen 7 6800H",   gpu: "NVIDIA RTX 3060",  ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 70, gpuScore: 65, ramScore: 53, storeScore: 60 },
+      { label: "Ryzen 7 7745HX / RTX 4060 / 16 GB / 512 GB SSD",  cpu: "AMD Ryzen 7 7745HX",  gpu: "NVIDIA RTX 4060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 78, gpuScore: 72, ramScore: 73, storeScore: 60 },
+    ],
+  },
+
+  // ---- MSI ADDITIONAL ----
+  {
+    id: 50,
+    brand: "MSI",
+    name: "MSI GS66 Stealth (2021/2022)",
+    variants: [
+      { label: "i7-11800H / RTX 3070 / 32 GB / 1 TB SSD",   cpu: "Intel Core i7-11800H",  gpu: "NVIDIA RTX 3070",  ram: "32 GB", storage: "1 TB SSD",    cpuScore: 70, gpuScore: 75, ramScore: 92, storeScore: 78 },
+      { label: "i9-12900H / RTX 3080 / 32 GB / 2 TB SSD",   cpu: "Intel Core i9-12900H",  gpu: "NVIDIA RTX 3080",  ram: "32 GB", storage: "2 TB SSD",    cpuScore: 88, gpuScore: 82, ramScore: 92, storeScore: 95 },
+    ],
+  },
+  {
+    id: 51,
+    brand: "MSI",
+    name: "MSI Pulse GL66 / GL76 (2022)",
+    variants: [
+      { label: "i7-12700H / RTX 3060 / 16 GB / 512 GB SSD",    cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3060",    ram: "16 GB", storage: "512 GB SSD",  cpuScore: 80, gpuScore: 65, ramScore: 73, storeScore: 60 },
+      { label: "i7-12700H / RTX 3070 Ti / 16 GB / 1 TB SSD",   cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 78, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 52,
+    brand: "MSI",
+    name: "MSI Sword 15 / 17 (2022/2023)",
+    variants: [
+      { label: "i7-12700H / RTX 3060 / 8 GB / 512 GB SSD",   cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3060",  ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 80, gpuScore: 65, ramScore: 53, storeScore: 60 },
+      { label: "i7-12700H / RTX 3070 / 16 GB / 1 TB SSD",    cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3070",  ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 75, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 53,
+    brand: "MSI",
+    name: "MSI Cyborg 15 (2023/2024)",
+    variants: [
+      { label: "i5-12450H / RTX 4050 / 8 GB / 512 GB SSD",    cpu: "Intel Core i5-12450H",  gpu: "NVIDIA RTX 4050",  ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 55, gpuScore: 62, ramScore: 53, storeScore: 60 },
+      { label: "i7-13620H / RTX 4060 / 16 GB / 512 GB SSD",   cpu: "Intel Core i7-13620H",  gpu: "NVIDIA RTX 4060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 75, gpuScore: 72, ramScore: 73, storeScore: 60 },
+    ],
+  },
+  {
+    id: 54,
+    brand: "MSI",
+    name: "MSI Creator Z16 (2021/2022)",
+    variants: [
+      { label: "i7-11800H / RTX 3060 / 16 GB / 1 TB SSD",     cpu: "Intel Core i7-11800H",  gpu: "NVIDIA RTX 3060",    ram: "16 GB", storage: "1 TB SSD",    cpuScore: 70, gpuScore: 65, ramScore: 73, storeScore: 78 },
+      { label: "i9-12900H / RTX 3070 Ti / 32 GB / 2 TB SSD",  cpu: "Intel Core i9-12900H",  gpu: "NVIDIA RTX 3070 Ti", ram: "32 GB", storage: "2 TB SSD",    cpuScore: 88, gpuScore: 78, ramScore: 92, storeScore: 95 },
+    ],
+  },
+  {
+    id: 55,
+    brand: "MSI",
+    name: "MSI Raider GE67 HX (2023/2024)",
+    variants: [
+      { label: "i9-13980HX / RTX 4080 / 32 GB / 2 TB SSD",   cpu: "Intel Core i9-13980HX",  gpu: "NVIDIA RTX 4080",  ram: "32 GB", storage: "2 TB SSD",    cpuScore: 94, gpuScore: 94, ramScore: 92, storeScore: 95 },
+      { label: "i9-14900HX / RTX 4090 / 64 GB / 4 TB SSD",   cpu: "Intel Core i9-14900HX",  gpu: "NVIDIA RTX 4090",  ram: "64 GB", storage: "4 TB SSD",    cpuScore: 95, gpuScore: 98, ramScore: 98, storeScore: 99 },
+    ],
+  },
+  {
+    id: 56,
+    brand: "MSI",
+    name: "MSI Thin GF65 (2021)",
+    variants: [
+      { label: "i7-11800H / RTX 3060 / 8 GB / 512 GB SSD",  cpu: "Intel Core i7-11800H",  gpu: "NVIDIA RTX 3060",  ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 70, gpuScore: 65, ramScore: 53, storeScore: 60 },
+    ],
+  },
+
+  // ---- LENOVO ADDITIONAL ----
+  {
+    id: 57,
+    brand: "Lenovo",
+    name: "Lenovo Legion 5i Gen 7 (2022)",
+    variants: [
+      { label: "i5-12500H / RTX 3060 / 16 GB / 512 GB SSD",    cpu: "Intel Core i5-12500H",  gpu: "NVIDIA RTX 3060",    ram: "16 GB", storage: "512 GB SSD",  cpuScore: 65, gpuScore: 65, ramScore: 73, storeScore: 60 },
+      { label: "i7-12700H / RTX 3070 Ti / 16 GB / 1 TB SSD",   cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 78, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 58,
+    brand: "Lenovo",
+    name: "Lenovo Legion 5 Pro Gen 7 / Gen 8 (2022/2023)",
+    variants: [
+      { label: "Ryzen 7 6800H / RTX 3070 Ti / 16 GB / 1 TB SSD",  cpu: "AMD Ryzen 7 6800H",     gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 70, gpuScore: 78, ramScore: 73, storeScore: 78 },
+      { label: "i5-13500HX / RTX 4060 / 16 GB / 512 GB SSD",      cpu: "Intel Core i5-13500HX", gpu: "NVIDIA RTX 4060",    ram: "16 GB", storage: "512 GB SSD",  cpuScore: 68, gpuScore: 72, ramScore: 73, storeScore: 60 },
+      { label: "Ryzen 9 7945HX / RTX 4070 / 32 GB / 1 TB SSD",    cpu: "AMD Ryzen 9 7945HX",    gpu: "NVIDIA RTX 4070",    ram: "32 GB", storage: "1 TB SSD",    cpuScore: 90, gpuScore: 83, ramScore: 92, storeScore: 78 },
+    ],
+  },
+  {
+    id: 59,
+    brand: "Lenovo",
+    name: "Lenovo Legion 7 Gen 7 / Gen 8 (2022/2023)",
+    variants: [
+      { label: "Ryzen 9 6900HX / RTX 3080 Ti / 32 GB / 1 TB SSD",  cpu: "AMD Ryzen 9 6900HX",    gpu: "NVIDIA RTX 3080 Ti", ram: "32 GB", storage: "1 TB SSD",    cpuScore: 78, gpuScore: 87, ramScore: 92, storeScore: 78 },
+      { label: "i7-13700HX / RTX 4070 Ti / 32 GB / 1 TB SSD",      cpu: "Intel Core i7-13700HX", gpu: "NVIDIA RTX 4070 Ti", ram: "32 GB", storage: "1 TB SSD",    cpuScore: 83, gpuScore: 89, ramScore: 92, storeScore: 78 },
+    ],
+  },
+  {
+    id: 60,
+    brand: "Lenovo",
+    name: "Lenovo Legion Pro 7 Gen 8 (2023/2024)",
+    variants: [
+      { label: "i9-13900HX / RTX 4080 / 32 GB / 1 TB SSD",   cpu: "Intel Core i9-13900HX",  gpu: "NVIDIA RTX 4080",  ram: "32 GB", storage: "1 TB SSD",    cpuScore: 93, gpuScore: 94, ramScore: 92, storeScore: 78 },
+      { label: "i9-13900HX / RTX 4090 / 32 GB / 2 TB SSD",   cpu: "Intel Core i9-13900HX",  gpu: "NVIDIA RTX 4090",  ram: "32 GB", storage: "2 TB SSD",    cpuScore: 94, gpuScore: 98, ramScore: 92, storeScore: 95 },
+    ],
+  },
+  {
+    id: 61,
+    brand: "Lenovo",
+    name: "Lenovo Legion Slim 5i Gen 8 (2023)",
+    variants: [
+      { label: "i5-13500H / RTX 4050 / 16 GB / 512 GB SSD",  cpu: "Intel Core i5-13500H",  gpu: "NVIDIA RTX 4050",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 67, gpuScore: 62, ramScore: 73, storeScore: 60 },
+      { label: "i7-13700H / RTX 4060 / 16 GB / 1 TB SSD",    cpu: "Intel Core i7-13700H",  gpu: "NVIDIA RTX 4060",  ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 72, ramScore: 73, storeScore: 78 },
+    ],
+  },
+
+  // ---- ACER ADDITIONAL ----
+  {
+    id: 62,
+    brand: "Acer",
+    name: "Acer Predator Helios 300 (2021/2022/2023)",
+    variants: [
+      { label: "i7-11800H / RTX 3060 / 16 GB / 512 GB SSD",    cpu: "Intel Core i7-11800H",  gpu: "NVIDIA RTX 3060",    ram: "16 GB", storage: "512 GB SSD",  cpuScore: 70, gpuScore: 65, ramScore: 73, storeScore: 60 },
+      { label: "i7-12700H / RTX 3070 Ti / 16 GB / 1 TB SSD",   cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 78, ramScore: 73, storeScore: 78 },
+      { label: "i7-13700HX / RTX 4060 / 16 GB / 512 GB SSD",   cpu: "Intel Core i7-13700HX", gpu: "NVIDIA RTX 4060",    ram: "16 GB", storage: "512 GB SSD",  cpuScore: 83, gpuScore: 72, ramScore: 73, storeScore: 60 },
+    ],
+  },
+  {
+    id: 63,
+    brand: "Acer",
+    name: "Acer Predator Triton 300 SE (2021/2022)",
+    variants: [
+      { label: "i7-11375H / RTX 3060 / 16 GB / 512 GB SSD",  cpu: "Intel Core i7-11375H",  gpu: "NVIDIA RTX 3060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 61, gpuScore: 65, ramScore: 73, storeScore: 60 },
+      { label: "i7-12700H / RTX 3060 / 16 GB / 512 GB SSD",  cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 80, gpuScore: 65, ramScore: 73, storeScore: 60 },
+    ],
+  },
+  {
+    id: 64,
+    brand: "Acer",
+    name: "Acer Predator Triton 500 SE (2022)",
+    variants: [
+      { label: "i7-12700H / RTX 3080 Ti / 16 GB / 1 TB SSD",  cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3080 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 87, ramScore: 73, storeScore: 78 },
+      { label: "i9-12900H / RTX 3080 Ti / 32 GB / 2 TB SSD",  cpu: "Intel Core i9-12900H",  gpu: "NVIDIA RTX 3080 Ti", ram: "32 GB", storage: "2 TB SSD",    cpuScore: 88, gpuScore: 87, ramScore: 92, storeScore: 95 },
+    ],
+  },
+  {
+    id: 65,
+    brand: "Acer",
+    name: "Acer Nitro 16 (2023/2024)",
+    variants: [
+      { label: "Ryzen 5 7535HS / RTX 4050 / 8 GB / 512 GB SSD",   cpu: "AMD Ryzen 5 7535HS",  gpu: "NVIDIA RTX 4050",  ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 63, gpuScore: 62, ramScore: 53, storeScore: 60 },
+      { label: "Ryzen 7 7745HX / RTX 4060 / 16 GB / 512 GB SSD",  cpu: "AMD Ryzen 7 7745HX",  gpu: "NVIDIA RTX 4060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 78, gpuScore: 72, ramScore: 73, storeScore: 60 },
+    ],
+  },
+  {
+    id: 66,
+    brand: "Acer",
+    name: "Acer Nitro V 16 (2024)",
+    variants: [
+      { label: "Ryzen 5 7535HS / RTX 4050 / 8 GB / 512 GB SSD",  cpu: "AMD Ryzen 5 7535HS",   gpu: "NVIDIA RTX 4050",  ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 63, gpuScore: 62, ramScore: 53, storeScore: 60 },
+      { label: "i5-13420H / RTX 4050 / 16 GB / 512 GB SSD",      cpu: "Intel Core i5-13420H", gpu: "NVIDIA RTX 4050",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 60, gpuScore: 62, ramScore: 73, storeScore: 60 },
+    ],
+  },
+
+  // ---- HP ADDITIONAL ----
+  {
+    id: 67,
+    brand: "HP",
+    name: "HP Omen 17 (2022/2023/2024)",
+    variants: [
+      { label: "i7-12700H / RTX 3070 Ti / 16 GB / 1 TB SSD",   cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 78, ramScore: 73, storeScore: 78 },
+      { label: "i9-13900HX / RTX 4080 / 32 GB / 2 TB SSD",     cpu: "Intel Core i9-13900HX", gpu: "NVIDIA RTX 4080",    ram: "32 GB", storage: "2 TB SSD",    cpuScore: 93, gpuScore: 94, ramScore: 92, storeScore: 95 },
+    ],
+  },
+  {
+    id: 68,
+    brand: "HP",
+    name: "HP Omen 16 (2022/2023)",
+    variants: [
+      { label: "i7-12700H / RTX 3060 / 16 GB / 512 GB SSD",    cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 80, gpuScore: 65, ramScore: 73, storeScore: 60 },
+      { label: "Ryzen 7 7745HX / RTX 4070 / 16 GB / 1 TB SSD", cpu: "AMD Ryzen 7 7745HX",    gpu: "NVIDIA RTX 4070",  ram: "16 GB", storage: "1 TB SSD",    cpuScore: 78, gpuScore: 83, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 69,
+    brand: "HP",
+    name: "HP Victus 15 (2022/2023/2024)",
+    variants: [
+      { label: "i5-12450H / GTX 1650 / 8 GB / 256 GB SSD",       cpu: "Intel Core i5-12450H",  gpu: "NVIDIA GTX 1650",  ram: "8 GB",  storage: "256 GB SSD",  cpuScore: 55, gpuScore: 40, ramScore: 53, storeScore: 50 },
+      { label: "Ryzen 5 7535HS / RTX 4050 / 8 GB / 512 GB SSD",  cpu: "AMD Ryzen 5 7535HS",    gpu: "NVIDIA RTX 4050",  ram: "8 GB",  storage: "512 GB SSD",  cpuScore: 63, gpuScore: 62, ramScore: 53, storeScore: 60 },
+    ],
+  },
+  {
+    id: 70,
+    brand: "HP",
+    name: "HP Victus 16 (2022/2023)",
+    variants: [
+      { label: "i5-12500H / RTX 3060 / 16 GB / 512 GB SSD",       cpu: "Intel Core i5-12500H",  gpu: "NVIDIA RTX 3060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 65, gpuScore: 65, ramScore: 73, storeScore: 60 },
+      { label: "Ryzen 7 7745HX / RTX 4060 / 16 GB / 512 GB SSD",  cpu: "AMD Ryzen 7 7745HX",    gpu: "NVIDIA RTX 4060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 78, gpuScore: 72, ramScore: 73, storeScore: 60 },
+    ],
+  },
+
+  // ---- DELL ADDITIONAL ----
+  {
+    id: 71,
+    brand: "Dell",
+    name: "Dell Alienware m15 R5 / R6 (2021/2022)",
+    variants: [
+      { label: "Ryzen 7 5800H / RTX 3060 / 16 GB / 512 GB SSD",  cpu: "AMD Ryzen 7 5800H",    gpu: "NVIDIA RTX 3060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 65, gpuScore: 65, ramScore: 73, storeScore: 60 },
+      { label: "Ryzen 9 5900HX / RTX 3070 / 16 GB / 1 TB SSD",   cpu: "AMD Ryzen 9 5900HX",   gpu: "NVIDIA RTX 3070",  ram: "16 GB", storage: "1 TB SSD",    cpuScore: 72, gpuScore: 75, ramScore: 73, storeScore: 78 },
+      { label: "i7-11800H / RTX 3080 / 32 GB / 1 TB SSD",        cpu: "Intel Core i7-11800H", gpu: "NVIDIA RTX 3080",  ram: "32 GB", storage: "1 TB SSD",    cpuScore: 70, gpuScore: 82, ramScore: 92, storeScore: 78 },
+    ],
+  },
+  {
+    id: 72,
+    brand: "Dell",
+    name: "Dell Alienware x15 R2 (2022)",
+    variants: [
+      { label: "i7-12700H / RTX 3070 Ti / 16 GB / 1 TB SSD",   cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 78, ramScore: 73, storeScore: 78 },
+      { label: "i9-12900H / RTX 3080 Ti / 32 GB / 2 TB SSD",   cpu: "Intel Core i9-12900H",  gpu: "NVIDIA RTX 3080 Ti", ram: "32 GB", storage: "2 TB SSD",    cpuScore: 88, gpuScore: 87, ramScore: 92, storeScore: 95 },
+    ],
+  },
+  {
+    id: 73,
+    brand: "Dell",
+    name: "Dell Alienware m18 (2023/2024)",
+    variants: [
+      { label: "i9-13980HX / RTX 4080 / 32 GB / 2 TB SSD",   cpu: "Intel Core i9-13980HX",  gpu: "NVIDIA RTX 4080",  ram: "32 GB", storage: "2 TB SSD",    cpuScore: 94, gpuScore: 94, ramScore: 92, storeScore: 95 },
+      { label: "i9-13980HX / RTX 4090 / 64 GB / 4 TB SSD",   cpu: "Intel Core i9-13980HX",  gpu: "NVIDIA RTX 4090",  ram: "64 GB", storage: "4 TB SSD",    cpuScore: 95, gpuScore: 98, ramScore: 98, storeScore: 99 },
+    ],
+  },
+  {
+    id: 74,
+    brand: "Dell",
+    name: "Dell G14 (2024)",
+    variants: [
+      { label: "Ryzen 7 8845HS / RTX 4060 / 16 GB / 512 GB SSD",  cpu: "AMD Ryzen 7 8845HS",  gpu: "NVIDIA RTX 4060",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 82, gpuScore: 72, ramScore: 73, storeScore: 60 },
+      { label: "Ryzen 9 8945HS / RTX 4070 / 32 GB / 1 TB SSD",    cpu: "AMD Ryzen 9 8945HS",  gpu: "NVIDIA RTX 4070",  ram: "32 GB", storage: "1 TB SSD",    cpuScore: 90, gpuScore: 83, ramScore: 92, storeScore: 78 },
+    ],
+  },
+
+  // ---- RAZER ADDITIONAL ----
+  {
+    id: 75,
+    brand: "Razer",
+    name: "Razer Blade 15 (2020/2021)",
+    variants: [
+      { label: "i7-10875H / RTX 2070 Super / 16 GB / 512 GB SSD",  cpu: "Intel Core i7-10875H",  gpu: "NVIDIA RTX 2070 Super", ram: "16 GB", storage: "512 GB SSD",  cpuScore: 48, gpuScore: 60, ramScore: 73, storeScore: 60 },
+      { label: "i7-10875H / RTX 2080 Super / 16 GB / 1 TB SSD",    cpu: "Intel Core i7-10875H",  gpu: "NVIDIA RTX 2080 Super", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 48, gpuScore: 70, ramScore: 73, storeScore: 78 },
+    ],
+  },
+  {
+    id: 76,
+    brand: "Razer",
+    name: "Razer Blade 15 (2021/2022)",
+    variants: [
+      { label: "i7-11800H / RTX 3070 / 16 GB / 1 TB SSD",  cpu: "Intel Core i7-11800H",  gpu: "NVIDIA RTX 3070",  ram: "16 GB", storage: "1 TB SSD",    cpuScore: 70, gpuScore: 75, ramScore: 73, storeScore: 78 },
+      { label: "i9-11900H / RTX 3080 / 32 GB / 1 TB SSD",  cpu: "Intel Core i9-11900H",  gpu: "NVIDIA RTX 3080",  ram: "32 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 82, ramScore: 92, storeScore: 78 },
+    ],
+  },
+  {
+    id: 77,
+    brand: "Razer",
+    name: "Razer Blade 15 (2022/2023)",
+    variants: [
+      { label: "i7-12800H / RTX 3070 Ti / 16 GB / 1 TB SSD",   cpu: "Intel Core i7-12800H",  gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 82, gpuScore: 78, ramScore: 73, storeScore: 78 },
+      { label: "i9-12900H / RTX 3080 Ti / 32 GB / 1 TB SSD",   cpu: "Intel Core i9-12900H",  gpu: "NVIDIA RTX 3080 Ti", ram: "32 GB", storage: "1 TB SSD",    cpuScore: 88, gpuScore: 87, ramScore: 92, storeScore: 78 },
+      { label: "i9-13950HX / RTX 4070 / 16 GB / 1 TB SSD",     cpu: "Intel Core i9-13950HX", gpu: "NVIDIA RTX 4070",    ram: "16 GB", storage: "1 TB SSD",    cpuScore: 93, gpuScore: 83, ramScore: 73, storeScore: 78 },
+      { label: "i9-13950HX / RTX 4080 / 32 GB / 2 TB SSD",     cpu: "Intel Core i9-13950HX", gpu: "NVIDIA RTX 4080",    ram: "32 GB", storage: "2 TB SSD",    cpuScore: 94, gpuScore: 94, ramScore: 92, storeScore: 95 },
+    ],
+  },
+
+  // ---- GIGABYTE ADDITIONAL ----
+  {
+    id: 78,
+    brand: "Gigabyte",
+    name: "Gigabyte AORUS 15 (2022/2023)",
+    variants: [
+      { label: "i7-12700H / RTX 3070 Ti / 16 GB / 1 TB SSD",   cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 78, ramScore: 73, storeScore: 78 },
+      { label: "i7-13700H / RTX 4060 / 16 GB / 1 TB SSD",      cpu: "Intel Core i7-13700H",  gpu: "NVIDIA RTX 4060",    ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 72, ramScore: 73, storeScore: 78 },
+      { label: "i9-13980HX / RTX 4070 / 32 GB / 1 TB SSD",     cpu: "Intel Core i9-13980HX", gpu: "NVIDIA RTX 4070",    ram: "32 GB", storage: "1 TB SSD",    cpuScore: 94, gpuScore: 83, ramScore: 92, storeScore: 78 },
+    ],
+  },
+  {
+    id: 79,
+    brand: "Gigabyte",
+    name: "Gigabyte AORUS 5 SE (2022)",
+    variants: [
+      { label: "i7-12700H / RTX 3070 Ti / 16 GB / 1 TB SSD",  cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3070 Ti", ram: "16 GB", storage: "1 TB SSD",    cpuScore: 80, gpuScore: 78, ramScore: 73, storeScore: 78 },
+    ],
+  },
+
+  // ---- SAMSUNG ----
+  {
+    id: 80,
+    brand: "Samsung",
+    name: "Samsung Galaxy Book3 Ultra (2023)",
+    variants: [
+      { label: "i7-13700H / RTX 4050 / 16 GB / 512 GB SSD",  cpu: "Intel Core i7-13700H",  gpu: "NVIDIA RTX 4050",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 80, gpuScore: 62, ramScore: 73, storeScore: 60 },
+      { label: "i9-13900H / RTX 4070 / 32 GB / 1 TB SSD",    cpu: "Intel Core i9-13900H",  gpu: "NVIDIA RTX 4070",  ram: "32 GB", storage: "1 TB SSD",    cpuScore: 86, gpuScore: 83, ramScore: 92, storeScore: 78 },
+    ],
+  },
+  {
+    id: 81,
+    brand: "Samsung",
+    name: "Samsung Galaxy Book4 Ultra (2024)",
+    variants: [
+      { label: "Core Ultra 7 155H / RTX 4050 / 16 GB / 512 GB SSD",  cpu: "Intel Core Ultra 7 155H",  gpu: "NVIDIA RTX 4050",  ram: "16 GB", storage: "512 GB SSD",  cpuScore: 82, gpuScore: 62, ramScore: 73, storeScore: 60 },
+      { label: "Core Ultra 9 185H / RTX 4070 / 32 GB / 1 TB SSD",    cpu: "Intel Core Ultra 9 185H",  gpu: "NVIDIA RTX 4070",  ram: "32 GB", storage: "1 TB SSD",    cpuScore: 91, gpuScore: 83, ramScore: 92, storeScore: 78 },
+    ],
+  },
+
+  // ---- LG ----
+  {
+    id: 82,
+    brand: "LG",
+    name: "LG UltraGear 17G90Q (2022)",
+    variants: [
+      { label: "i7-12700H / RTX 3080 Ti / 16 GB / 2 TB SSD",  cpu: "Intel Core i7-12700H",  gpu: "NVIDIA RTX 3080 Ti", ram: "16 GB", storage: "2 TB SSD",    cpuScore: 80, gpuScore: 87, ramScore: 73, storeScore: 95 },
+      { label: "i9-12900H / RTX 3080 Ti / 32 GB / 2 TB SSD",  cpu: "Intel Core i9-12900H",  gpu: "NVIDIA RTX 3080 Ti", ram: "32 GB", storage: "2 TB SSD",    cpuScore: 88, gpuScore: 87, ramScore: 92, storeScore: 95 },
+    ],
+  },
+
 ];
 
 
@@ -354,9 +849,6 @@ window.addEventListener("DOMContentLoaded", function() {
     showRigCard(myRig);
     showRigStats(myRig);
   }
-
-  // set up the game search box listener
-  setupSearch();
 
   // close dropdowns when clicking elsewhere on the page
   document.addEventListener("click", function(e) {
@@ -386,9 +878,8 @@ function handleNav(id) {
 }
 
 function scrollToGames() {
-  var el = document.getElementById("section-games");
-  if (el) el.scrollIntoView({ behavior: "smooth" });
-  document.getElementById("game-search-input").focus();
+  // Game Library is now its own page — navigate there
+  window.location.href = "games.html";
 }
 
 
@@ -505,7 +996,7 @@ function saveRig() {
   showRigCard(myRig);
   showRigStats(myRig);
   closeModal();
-  showToast("✅ " + myRig.brand + " " + myRig.name + " saved to Armoury!");
+  showToast(myRig.brand + " " + myRig.name + " saved to Armoury!");
 }
 
 
@@ -529,8 +1020,8 @@ function showRigCard(rig) {
       <p class="rig-cpu-line">' + rig.cpu + '</p>\
       <p class="rig-gpu-line">' + rig.gpu + '</p>\
       <div class="rig-chips">\
-        <span class="rig-chip">🧠 ' + rig.ram + '</span>\
-        <span class="rig-chip">💾 ' + rig.storage + '</span>\
+        <span class="rig-chip">RAM: ' + rig.ram + '</span>\
+        <span class="rig-chip">SSD: ' + rig.storage + '</span>\
       </div>\
       <p class="rig-saved-when">Saved on ' + rig.savedOn + '</p>\
       <button class="btn-change-rig" onclick="openModal()">Change Setup</button>\
@@ -649,7 +1140,7 @@ function clearRig() {
   // restore stats placeholder
   var empty = '\
     <div class="stats-placeholder">\
-      <div class="stats-ph-icon">😴</div>\
+      <div class="stats-ph-icon">---</div>\
       <p>No setup selected yet.</p>\
       <p class="stats-ph-sub">Click <strong>+</strong> to add<br>your laptop.</p>\
     </div>\
@@ -678,180 +1169,7 @@ function showToast(msg) {
 
 
 // =====================================================
-//  GAME SEARCH — RAWG API (PC / Windows platform only)
-// =====================================================
-
-function setupSearch() {
-  var input = document.getElementById("game-search-input");
-  var btn   = document.getElementById("game-search-btn");
-
-  btn.addEventListener("click", function() {
-    var q = input.value.trim();
-    if (q) fetchGames(q);
-  });
-
-  input.addEventListener("keydown", function(e) {
-    if (e.key === "Enter") {
-      var q = input.value.trim();
-      if (q) fetchGames(q);
-    }
-  });
-}
-
-function doSearch() {
-  var q = document.getElementById("game-search-input").value.trim();
-  if (q) fetchGames(q);
-}
-
-async function fetchGames(query) {
-  var grid = document.getElementById("game-results");
-  grid.innerHTML = '<p class="msg-loading">🔍 Searching Windows games for "' + query + '"...</p>';
-
-  try {
-    // build the RAWG url — platforms=4 filters to PC/Windows only
-    var rawgUrl = [
-      "https://api.rawg.io/api/games",
-      "?key=" + RAWG_KEY,
-      "&search=" + encodeURIComponent(query),
-      "&platforms=" + PC_PLATFORM,
-      "&ordering=-rating",
-      "&page_size=12",
-    ].join("");
-
-    // when opened as file:// we need a CORS proxy because browsers block it
-    var isFile   = window.location.protocol === "file:";
-    var finalUrl = isFile
-      ? "https://corsproxy.io/?url=" + encodeURIComponent(rawgUrl)
-      : rawgUrl;
-
-    var res  = await fetch(finalUrl);
-    var data = await res.json();
-
-    // filter out cards with no image using .filter()
-    var games = data.results.filter(function(g) { return g.background_image; });
-
-    // sort by rating, best first, using .sort()
-    games = games.sort(function(a, b) { return b.rating - a.rating; });
-
-    renderGames(games);
-  } catch (err) {
-    console.log("RAWG fetch error:", err);
-    grid.innerHTML = '<p class="msg-error">❌ Could not load games. Check your internet connection.</p>';
-  }
-}
-
-function renderGames(games) {
-  var grid = document.getElementById("game-results");
-
-  if (games.length === 0) {
-    grid.innerHTML = '<p class="msg-loading">No Windows games found. Try a different search term.</p>';
-    return;
-  }
-
-  // build cards using .map() — junior dev writes one step at a time
-  var cards = games.map(function(game) {
-
-    var rating  = game.rating ? game.rating.toFixed(1) : "N/A";
-    var genres  = game.genres ? game.genres.map(function(g) { return g.name; }).join(", ") : "";
-    var mcScore = game.metacritic ? '<span class="game-meta-score">' + game.metacritic + '</span>' : "";
-    var compat  = getCompatBadge(game);
-
-    return '\
-      <div class="game-card" onclick="openGameDetail(\'' + game.id + '\')">\
-        <img class="game-thumb" src="' + game.background_image + '" alt="' + game.name + '" loading="lazy" />\
-        <div class="game-meta">\
-          <div class="game-title">' + game.name + '</div>\
-          <div class="game-genre">' + genres + '</div>\
-          <div class="game-row">\
-            <span class="game-rating">⭐ ' + rating + '</span>\
-            ' + mcScore + '\
-            ' + compat + '\
-          </div>\
-        </div>\
-      </div>\
-    ';
-  });
-
-  grid.innerHTML = cards.join("");
-}
-
-// figure out compat badge based on rig scores vs game weight
-function getCompatBadge(game) {
-  if (!myRig) {
-    return '<span class="compat compat-unknown">Add Setup to Check</span>';
-  }
-
-  var avg      = (myRig.cpuScore + myRig.gpuScore) / 2;
-  var weight   = game.metacritic ? game.metacritic : 60;
-
-  if (avg >= 80 || weight <= 65) {
-    return '<span class="compat compat-yes">✓ Runs Well</span>';
-  } else if (avg >= 60) {
-    return '<span class="compat compat-maybe">~ May Run</span>';
-  } else {
-    return '<span class="compat compat-no">✗ May Struggle</span>';
-  }
-}
-
-
-// =====================================================
-//  GAME DETAIL PANEL
-// =====================================================
-
-async function openGameDetail(gameId) {
-  var panel = document.getElementById("game-detail-box");
-  panel.innerHTML = '<p class="msg-loading" style="padding:14px 0;">Loading details...</p>';
-  panel.classList.add("open");
-
-  try {
-    var rawgDetailUrl = "https://api.rawg.io/api/games/" + gameId + "?key=" + RAWG_KEY;
-    var isFile   = window.location.protocol === "file:";
-    var finalUrl = isFile
-      ? "https://corsproxy.io/?url=" + encodeURIComponent(rawgDetailUrl)
-      : rawgDetailUrl;
-
-    var res  = await fetch(finalUrl);
-    var game = await res.json();
-
-    // extract info using .map()
-    var platforms  = game.platforms  ? game.platforms.map(function(p)  { return p.platform.name; }).join(" · ") : "Unknown";
-    var devs       = game.developers ? game.developers.map(function(d) { return d.name; }).join(", ") : "Unknown";
-    var publishers = game.publishers ? game.publishers.map(function(p) { return p.name; }).join(", ") : "Unknown";
-    var genres     = game.genres     ? game.genres.map(function(g)     { return g.name; }).join(", ") : "Unknown";
-    var esrb       = game.esrb_rating ? game.esrb_rating.name : "Not Rated";
-    var desc       = game.description_raw ? game.description_raw.slice(0, 380) + "…" : "No description.";
-    var compat     = getCompatBadge(game);
-
-    panel.innerHTML = '\
-      <button class="detail-close" onclick="closeGameDetail()">✕</button>\
-      <h3 class="detail-heading">' + game.name + '</h3>\
-      <div class="detail-badges">' + compat + '<span class="detail-esrb">' + esrb + '</span></div>\
-      <p class="detail-desc">' + desc + '</p>\
-      <div class="detail-meta-grid">\
-        <div class="detail-meta-row"><strong>Developer:</strong> ' + devs + '</div>\
-        <div class="detail-meta-row"><strong>Publisher:</strong> ' + publishers + '</div>\
-        <div class="detail-meta-row"><strong>Genre:</strong> ' + genres + '</div>\
-        <div class="detail-meta-row"><strong>Platforms:</strong> ' + platforms + '</div>\
-        <div class="detail-meta-row"><strong>Rating:</strong> ⭐ ' + (game.rating ? game.rating.toFixed(1) : "N/A") + ' / 5</div>\
-        <div class="detail-meta-row"><strong>Metacritic:</strong> ' + (game.metacritic || "N/A") + '</div>\
-        <div class="detail-meta-row"><strong>Released:</strong> ' + (game.released || "N/A") + '</div>\
-        <div class="detail-meta-row"><strong>Avg Playtime:</strong> ' + (game.playtime ? game.playtime + " hrs" : "N/A") + '</div>\
-      </div>\
-    ';
-  } catch (err) {
-    console.log("Game detail fetch error:", err);
-    panel.innerHTML = '<p class="msg-error" style="padding:14px 0;">❌ Could not load game details.</p>';
-  }
-}
-
-function closeGameDetail() {
-  var panel = document.getElementById("game-detail-box");
-  panel.classList.remove("open");
-}
-
-
-// =====================================================
-//  MOBILE — sidebar, stats sheet, bottom nav
+//  SIDEBAR TOGGLE
 // =====================================================
 
 function openSidebar() {
@@ -862,6 +1180,19 @@ function openSidebar() {
   document.body.style.overflow = "hidden";
 }
 
+function toggleSidebar() {
+  var sb = document.getElementById("sidebar");
+  var ov = document.getElementById("sb-overlay");
+  var isOpen = sb.classList.contains("open");
+  if (isOpen) {
+    closeSidebar();
+  } else {
+    sb.classList.add("open");
+    ov.classList.add("show");
+    document.body.style.overflow = "hidden";
+  }
+}
+
 function closeSidebar() {
   var sb = document.getElementById("sidebar");
   var ov = document.getElementById("sb-overlay");
@@ -869,6 +1200,11 @@ function closeSidebar() {
   ov.classList.remove("show");
   document.body.style.overflow = "";
 }
+
+
+// =====================================================
+//  MOBILE — stats sheet, bottom nav
+// =====================================================
 
 function openStatsSheet() {
   // sync content from the desktop panel before showing

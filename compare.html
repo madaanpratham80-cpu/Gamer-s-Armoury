@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamer's Armoury — Compare Hardware</title>
+  <meta name="description" content="Gamer's Armoury Hardware Comparison Tool — compare two gaming laptops side by side, see benchmark scores, and find the best value." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;900&display=swap" />
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="compare.css" />
+</head>
+
+<body>
+
+  <div class="app" id="app">
+
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sb-logo">
+        <div class="sb-logo-icon">GA</div>
+        <div class="sb-logo-text">Gamer's<br>Armoury</div>
+      </div>
+
+      <button class="sb-close-btn" id="sb-close-btn" onclick="closeSidebar()">&#10005;</button>
+
+      <nav class="sb-nav">
+
+        <a class="sb-link" href="index.html">
+          <span class="sb-icon">&#8962;</span>
+          <span class="sb-label">Home</span>
+        </a>
+
+        <a class="sb-link" href="index.html">
+          <span class="sb-icon">PC</span>
+          <span class="sb-label">Devices</span>
+        </a>
+
+        <a class="sb-link" href="games.html">
+          <span class="sb-icon">GL</span>
+          <span class="sb-label">Game Library</span>
+        </a>
+
+        <!-- Compare is active on this page -->
+        <a class="sb-link active" href="compare.html">
+          <span class="sb-icon">VS</span>
+          <span class="sb-label">Compare</span>
+        </a>
+
+
+      </nav>
+
+      <div class="sb-bottom">
+        <a class="sb-link" href="#" onclick="return false;">
+          <span class="sb-icon">&#9632;</span>
+          <span class="sb-label">Feature Library</span>
+        </a>
+        <a class="sb-link" href="#" onclick="return false;">
+          <span class="sb-icon">&#62;</span>
+          <span class="sb-label">User Center</span>
+        </a>
+        <a class="sb-link" href="#" onclick="return false;">
+          <span class="sb-icon">&#9881;</span>
+          <span class="sb-label">Settings</span>
+        </a>
+      </div>
+
+    </aside>
+
+    <div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
+
+    <!-- =============================================
+         MAIN CONTENT
+         ============================================= -->
+    <main class="main" id="main">
+
+      <div class="topbar">
+        <button class="topbar-hamburger" id="topbar-hamburger" onclick="toggleSidebar()" aria-label="Toggle menu">&#9776;</button>
+        <h1 class="topbar-title">Compare Hardware</h1>
+
+      </div>
+
+      <div class="page-body" id="page-body">
+
+        <!-- ---- LAST COMPARED RESTORE BANNER ---- -->
+        <div class="cmp-restore-bar" id="cmp-restore-bar" style="display:none;">
+          <span class="cmp-restore-icon">&#9854;</span>
+          <span class="cmp-restore-text" id="cmp-restore-text">Restore last comparison?</span>
+          <div class="cmp-restore-actions">
+            <button class="cmp-restore-btn" onclick="restoreLastCompared()">Restore</button>
+            <button class="cmp-restore-dismiss" onclick="dismissRestore()">&#10005;</button>
+          </div>
+        </div>
+
+        <!-- ---- INTRO ---- -->
+        <div class="cmp-intro-block">
+          <div class="section-header">
+            <span class="section-stripe">&#9619;&#9619;&#9619;</span>
+            <span class="section-title">Hardware Comparison</span>
+          </div>
+          <p class="cmp-intro-text">Select two laptops below and see a full side-by-side breakdown — benchmarks, price, and the overall winner.</p>
+        </div>
+
+        <!-- ---- SELECTION SLOTS ---- -->
+        <!-- On mobile: stacked vertically. On desktop: side by side with VS in center -->
+        <div class="cmp-slots-container" id="cmp-slots-container">
+
+          <!-- === SLOT A === -->
+          <div class="cmp-slot-card" id="slot-a-card">
+            <div class="cmp-slot-header">
+              <span class="cmp-slot-label">Laptop A</span>
+              <button class="cmp-slot-clear-btn" id="clear-btn-a" onclick="clearSlot('A')" style="display:none;" title="Clear slot">&#10005;</button>
+            </div>
+
+            <!-- Empty state — user hasn't selected yet -->
+            <div class="cmp-slot-empty" id="slot-a-empty">
+              <div class="cmp-add-ring" onclick="openPicker('A')">
+                <span class="cmp-add-plus">+</span>
+              </div>
+              <p class="cmp-slot-empty-text">Click <strong>+</strong> to select a laptop</p>
+            </div>
+
+            <!-- Picker — JS generates the entire UI here -->
+            <div class="cmp-picker-wrap" id="picker-a" style="display:none;">
+              <!-- filled by openPicker() in compare.js -->
+            </div>
+
+            <!-- Filled state — shows laptop details -->
+            <div class="cmp-slot-filled" id="slot-a-filled" style="display:none;">
+              <!-- JS fills this -->
+            </div>
+          </div>
+
+          <!-- VS BADGE — center column -->
+          <div class="cmp-vs-col">
+            <div class="cmp-vs-badge">VS</div>
+          </div>
+
+          <!-- === SLOT B === -->
+          <div class="cmp-slot-card" id="slot-b-card">
+            <div class="cmp-slot-header">
+              <span class="cmp-slot-label">Laptop B</span>
+              <button class="cmp-slot-clear-btn" id="clear-btn-b" onclick="clearSlot('B')" style="display:none;" title="Clear slot">&#10005;</button>
+            </div>
+
+            <div class="cmp-slot-empty" id="slot-b-empty">
+              <div class="cmp-add-ring" onclick="openPicker('B')">
+                <span class="cmp-add-plus">+</span>
+              </div>
+              <p class="cmp-slot-empty-text">Click <strong>+</strong> to select a laptop</p>
+            </div>
+
+            <!-- Picker — JS generates the entire UI here -->
+            <div class="cmp-picker-wrap" id="picker-b" style="display:none;">
+              <!-- filled by openPicker() in compare.js -->
+            </div>
+
+            <div class="cmp-slot-filled" id="slot-b-filled" style="display:none;">
+              <!-- JS fills this -->
+            </div>
+          </div>
+
+        </div>
+        <!-- end slots container -->
+
+        <!-- ---- COMPARE ACTION ROW ---- -->
+        <div class="cmp-action-row" id="cmp-action-row" style="display:none;">
+          <button class="cmp-compare-btn" id="cmp-compare-btn" onclick="doCompare()">
+            &#9889; Compare Now
+          </button>
+          <p class="cmp-action-hint">Both laptops selected — click to see the full breakdown</p>
+        </div>
+
+        <!-- ---- COMPARISON RESULTS ---- -->
+        <section class="section-block cmp-results-section" id="cmp-results" style="display:none;">
+
+          <!-- Winner banner -->
+          <div class="cmp-winner-banner" id="cmp-winner-banner">
+            <!-- JS fills this -->
+          </div>
+
+          <!-- Comparison table header -->
+          <div class="section-header">
+            <span class="section-stripe">&#9619;&#9619;&#9619;</span>
+            <span class="section-title">Spec Breakdown</span>
+          </div>
+
+          <!-- Table -->
+          <div class="cmp-table-scroll">
+            <table class="cmp-table" id="cmp-table">
+              <thead>
+                <tr>
+                  <th class="cmp-th cmp-th-spec">Specification</th>
+                  <th class="cmp-th cmp-th-a" id="cmp-th-a">Laptop A</th>
+                  <th class="cmp-th cmp-th-b" id="cmp-th-b">Laptop B</th>
+                </tr>
+              </thead>
+              <tbody id="cmp-tbody">
+                <!-- JS fills this -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ---- TRENDING GAMES SHOWCASE ---- -->
+        <section class="section-block" id="section-trending-games" style="margin-top: 20px;">
+          <div class="section-header">
+            <span class="section-stripe">&#9619;&#9619;&#9619;</span>
+            <span class="section-title">Trending Games Showcase</span>
+          </div>
+          <div class="trending-grid" id="trending-games-grid">
+            <p class="cmp-slot-empty-text" style="grid-column: 1 / -1; padding: 40px; text-align: center;">Firing up API...</p>
+          </div>
+        </section>
+
+      </div>
+      <!-- end page-body -->
+
+    </main>
+
+  </div>
+  <!-- end app -->
+
+  <div class="toast" id="toast"></div>
+
+  <script src="compare.js"></script>
+
+</body>
+</html>

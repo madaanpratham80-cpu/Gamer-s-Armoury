@@ -1,0 +1,11 @@
+{
+  "name": "gamers-armoury",
+  "version": "1.0.0",
+  "description": "Gamer's Armoury Dashboard",
+  "main": "main.js",
+  "scripts": {
+    "dev": "npx live-server --port=3000"
+  },
+  "author": "",
+  "license": "ISC"
+}

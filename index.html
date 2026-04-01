@@ -34,72 +34,37 @@
       <!-- nav -->
       <nav class="sb-nav">
 
-        <a class="sb-link active" id="nav-home" href="#" onclick="handleNav('nav-home'); return false;">
+        <a class="sb-link active" id="nav-home" href="index.html">
           <span class="sb-icon">&#8962;</span>
           <span class="sb-label">Home</span>
         </a>
 
-        <a class="sb-link" id="nav-devices" href="#" onclick="handleNav('nav-devices'); openModal(); return false;">
-          <span class="sb-icon">&#128187;</span>
+        <a class="sb-link" id="nav-devices" href="index.html">
+          <span class="sb-icon">PC</span>
           <span class="sb-label">Devices</span>
         </a>
 
-        <div class="sb-section">Playground</div>
-
-        <a class="sb-link" id="nav-aura" href="#" onclick="handleNav('nav-aura'); return false;">
-          <span class="sb-icon">&#10024;</span>
-          <span class="sb-label">Aura Sync</span>
-        </a>
-
-        <a class="sb-link" id="nav-wallpaper" href="#" onclick="handleNav('nav-wallpaper'); return false;">
-          <span class="sb-icon">&#128247;</span>
-          <span class="sb-label">Aura Wallpaper</span>
-        </a>
-
-        <div class="sb-section">Assistant</div>
-
-        <a class="sb-link" id="nav-macros" href="#" onclick="handleNav('nav-macros'); return false;">
-          <span class="sb-icon">&#9000;</span>
-          <span class="sb-label">Macros</span>
-        </a>
-
-        <a class="sb-link" id="nav-scenarios" href="#" onclick="handleNav('nav-scenarios'); return false;">
-          <span class="sb-icon">&#128203;</span>
-          <span class="sb-label">Scenario Profiles</span>
-        </a>
-
-        <a class="sb-link" id="nav-games" href="#" onclick="handleNav('nav-games'); scrollToGames(); return false;">
-          <span class="sb-icon">&#127918;</span>
+        <a class="sb-link" id="nav-games" href="games.html">
+          <span class="sb-icon">GL</span>
           <span class="sb-label">Game Library</span>
         </a>
 
-        <a class="sb-link" id="nav-display" href="#" onclick="handleNav('nav-display'); return false;">
-          <span class="sb-icon">&#128444;</span>
-          <span class="sb-label">Display Settings</span>
+        <a class="sb-link" id="nav-compare" href="compare.html">
+          <span class="sb-icon">VS</span>
+          <span class="sb-label">Compare</span>
         </a>
 
-        <div class="sb-section">Contents</div>
-
-        <a class="sb-link" id="nav-content" href="#" onclick="handleNav('nav-content'); return false;">
-          <span class="sb-icon">&#128225;</span>
-          <span class="sb-label">Content Platform</span>
-        </a>
-
-        <a class="sb-link" id="nav-promo" href="#" onclick="handleNav('nav-promo'); return false;">
-          <span class="sb-icon">&#127873;</span>
-          <span class="sb-label">Promotion</span>
-        </a>
 
       </nav>
 
       <!-- bottom links -->
       <div class="sb-bottom">
         <a class="sb-link" id="nav-features" href="#" onclick="handleNav('nav-features'); return false;">
-          <span class="sb-icon">&#128230;</span>
+          <span class="sb-icon">&#9632;</span>
           <span class="sb-label">Feature Library</span>
         </a>
         <a class="sb-link" id="nav-user" href="#" onclick="handleNav('nav-user'); return false;">
-          <span class="sb-icon">&#128100;</span>
+          <span class="sb-icon">&#62;</span>
           <span class="sb-label">User Center</span>
         </a>
         <a class="sb-link" id="nav-settings" href="#" onclick="handleNav('nav-settings'); return false;">
@@ -119,14 +84,9 @@
 
       <!-- top bar -->
       <div class="topbar">
-        <button class="topbar-hamburger" id="topbar-hamburger" onclick="openSidebar()" aria-label="Open menu">&#9776;</button>
+        <button class="topbar-hamburger" id="topbar-hamburger" onclick="toggleSidebar()" aria-label="Toggle menu">&#9776;</button>
         <h1 class="topbar-title">Home</h1>
-        <div class="topbar-actions">
-          <div class="topbar-btn" title="AI Mode">&#65319;&#65316;</div>
-          <div class="topbar-btn" title="Screenshot">&#128247;</div>
-          <div class="topbar-btn" title="Sound">&#128266;</div>
-          <div class="topbar-btn" title="Phone">&#128241;</div>
-        </div>
+
       </div>
 
       <!-- scrollable page body -->
@@ -164,40 +124,6 @@
 
         </section>
 
-        <!-- ---- GAME LIBRARY SECTION ---- -->
-        <section class="section-block" id="section-games">
-
-          <div class="section-header">
-            <span class="section-stripe">&#9619;&#9619;&#9619;</span>
-            <span class="section-title">Game Library</span>
-          </div>
-
-          <!-- search bar -->
-          <div class="search-row">
-            <input
-              class="search-input"
-              id="game-search-input"
-              type="text"
-              placeholder="Search Windows PC games... (e.g. Cyberpunk, Valorant)"
-              autocomplete="off"
-            />
-            <button class="search-btn" id="game-search-btn" onclick="doSearch()">
-              &#128269; Search
-            </button>
-          </div>
-
-          <!-- results grid -->
-          <div class="games-grid" id="game-results">
-            <p class="games-placeholder">Search for a game above to check compatibility with your setup &#127918;</p>
-          </div>
-
-          <!-- expanded game detail panel -->
-          <div class="game-detail-panel" id="game-detail-box">
-            <!-- JS fills in when a card is clicked -->
-          </div>
-
-        </section>
-
       </div>
       <!-- end page-body -->
 
@@ -217,7 +143,7 @@
       <!-- stats content — JS fills this or shows placeholder -->
       <div id="stats-content">
         <div class="stats-placeholder" id="stats-placeholder">
-          <div class="stats-ph-icon">&#128164;</div>
+          <div class="stats-ph-icon">---</div>
           <p>No setup selected yet.</p>
           <p class="stats-ph-sub">Click <strong>+</strong> to add<br>your laptop.</p>
         </div>
@@ -266,11 +192,11 @@
 
       <!-- action buttons -->
       <div class="modal-actions">
-        <button class="btn-save" id="save-rig-btn" onclick="saveRig()">&#128190; Save to Armoury</button>
+        <button class="btn-save" id="save-rig-btn" onclick="saveRig()">Save to Armoury</button>
         <button class="btn-cancel" id="cancel-btn" onclick="closeModal()">Cancel</button>
       </div>
 
-      <button class="btn-clear" id="clear-btn" onclick="clearRig(); closeModal();">&#128465; Remove Saved Setup</button>
+      <button class="btn-clear" id="clear-btn" onclick="clearRig(); closeModal();">Remove Saved Setup</button>
 
     </div>
   </div>
@@ -282,13 +208,13 @@
       <span>&#8962;</span><small>Home</small>
     </a>
     <a class="bnav-item" id="bnav-rig" href="#" onclick="setBottomActive('bnav-rig'); openModal(); return false;">
-      <span>&#128187;</span><small>Setup</small>
+      <span>PC</span><small>Setup</small>
     </a>
     <a class="bnav-item" id="bnav-games" href="#" onclick="setBottomActive('bnav-games'); scrollToGames(); return false;">
-      <span>&#127918;</span><small>Games</small>
+      <span>GL</span><small>Games</small>
     </a>
     <a class="bnav-item" id="bnav-stats" href="#" onclick="setBottomActive('bnav-stats'); openStatsSheet(); return false;">
-      <span>&#128202;</span><small>Stats</small>
+      <span>ST</span><small>Stats</small>
     </a>
   </nav>
 
@@ -297,7 +223,7 @@
     <div class="stats-sheet-pull"></div>
     <div class="stats-sheet-inner" id="stats-sheet-inner">
       <div class="stats-placeholder">
-        <div class="stats-ph-icon">&#128164;</div>
+        <div class="stats-ph-icon">---</div>
         <p>No setup selected yet.</p>
         <p class="stats-ph-sub">Add a laptop first!</p>
       </div>

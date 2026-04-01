@@ -71,8 +71,13 @@ button { cursor: pointer; font-family: inherit; }
   overflow-y: auto;
   overflow-x: hidden;
   flex-shrink: 0;
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* hide scrollbar on sidebar */
@@ -113,9 +118,9 @@ button { cursor: pointer; font-family: inherit; }
   letter-spacing: 0.5px;
 }
 
-/* only shows on mobile */
+/* close button — always visible since sidebar is a slide-over */
 .sb-close-btn {
-  display: none;
+  display: block;
   position: absolute;
   top: 12px;
   right: 12px;
@@ -124,7 +129,11 @@ button { cursor: pointer; font-family: inherit; }
   color: var(--text-dim);
   font-size: 16px;
   padding: 4px;
+  transition: color 0.15s;
+  cursor: pointer;
 }
+
+.sb-close-btn:hover { color: var(--orange); }
 
 /* nav */
 .sb-nav {
@@ -194,7 +203,13 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 .sb-overlay.show {
+  display: block;
   opacity: 1;
+}
+
+/* sidebar open state */
+.sidebar.open {
+  transform: translateX(0);
 }
 
 /* =====================================================
@@ -204,6 +219,7 @@ button { cursor: pointer; font-family: inherit; }
 .main {
   flex: 1;
   min-width: 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -223,13 +239,20 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 .topbar-hamburger {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   color: var(--text-mid);
   font-size: 18px;
   padding: 2px 6px 2px 0;
   flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.topbar-hamburger:hover {
+  color: var(--orange);
 }
 
 .topbar-title {
@@ -271,6 +294,8 @@ button { cursor: pointer; font-family: inherit; }
 /* scrollable body */
 .page-body {
   flex: 1;
+  min-height: 0;
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 18px 22px 24px;
@@ -1133,55 +1158,27 @@ button { cursor: pointer; font-family: inherit; }
    RESPONSIVE
    ===================================================== */
 
-/* Tablet: collapse sidebar to icons only */
-@media (max-width: 1024px) {
-  :root { --sidebar-w: 54px; --stats-w: 290px; }
+/* The sidebar is always a fixed slide-over (hamburger toggles it).
+   On wider screens we hide the stats panel at narrow widths. */
 
-  .sb-logo-text  { display: none; }
-  .sb-section    { display: none; }
-  .sb-label      { display: none; }
-  .sb-link       { justify-content: center; padding: 10px 0; }
-  .sb-logo       { justify-content: center; padding: 12px 0; }
-  .sidebar::-webkit-scrollbar { width: 0; }
+/* Hide right stats panel on tablets */
+@media (max-width: 1024px) {
+  :root { --stats-w: 290px; }
 }
 
-/* Narrow tablet: hide right stats panel */
 @media (max-width: 860px) {
   :root { --stats-w: 0px; }
   .stats-panel { display: none; }
 }
 
-/* Mobile: full slide-out sidebar, bottom nav */
+/* Mobile layout */
 @media (max-width: 640px) {
-  :root { --sidebar-w: 0px; }
-
   html, body { overflow: auto; overflow-x: hidden; }
 
   .app { flex-direction: column; height: auto; min-height: 100vh; }
 
-  /* sidebar becomes a slide-over drawer */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 240px;
-    height: 100%;
-    z-index: 200;
-    transform: translateX(-100%);
-    transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .sidebar.open { transform: translateX(0); }
-
-  .sb-close-btn { display: block; }
-  .sb-logo-text { display: block; }
-  .sb-section   { display: block; }
-  .sb-label     { display: inline; }
-  .sb-link      { justify-content: flex-start; padding: 8px 18px; }
-  .sb-logo      { justify-content: flex-start; padding: 16px; }
-
-  .sb-overlay { display: block; }
-  .sb-overlay.show { pointer-events: all; }
+  /* sidebar width on mobile */
+  .sidebar { width: 240px; }
 
   /* main takes full width */
   .main { width: 100%; overflow: visible; }
@@ -1193,8 +1190,6 @@ button { cursor: pointer; font-family: inherit; }
     background: var(--black);
   }
 
-  .topbar-hamburger { display: block; }
-
   .topbar-btn:nth-child(3),
   .topbar-btn:nth-child(4) { display: none; }
 
@@ -1205,14 +1200,6 @@ button { cursor: pointer; font-family: inherit; }
   }
 
   .stats-panel { display: none; }
-
-  /* game grid: 2 cols on mobile */
-  .games-grid { grid-template-columns: 1fr 1fr; }
-  .game-thumb  { height: 76px; }
-
-  /* search goes vertical */
-  .search-row { flex-direction: column; }
-  .search-btn { width: 100%; }
 
   .bottom-nav { display: flex; }
   .stats-sheet { display: block; }

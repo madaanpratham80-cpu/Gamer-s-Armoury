@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamer's Armoury — Game Library</title>
+  <meta name="description" content="Gamer's Armoury Game Library — search and explore Windows PC games, check compatibility with your gaming laptop." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;900&display=swap" />
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="games.css" />
+</head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="app" id="app">
+
+    <!-- =============================================
+         SIDEBAR
+         ============================================= -->
+    <aside class="sidebar" id="sidebar">
+
+      <!-- logo -->
+      <div class="sb-logo">
+        <div class="sb-logo-icon">GA</div>
+        <div class="sb-logo-text">Gamer's<br>Armoury</div>
+      </div>
+
+      <!-- hamburger close -->
+      <button class="sb-close-btn" id="sb-close-btn" onclick="closeSidebar()">&#10005;</button>
+
+      <!-- nav -->
+      <nav class="sb-nav">
+
+        <a class="sb-link" id="nav-home" href="index.html">
+          <span class="sb-icon">&#8962;</span>
+          <span class="sb-label">Home</span>
+        </a>
+
+        <a class="sb-link" id="nav-devices" href="index.html">
+          <span class="sb-icon">PC</span>
+          <span class="sb-label">Devices</span>
+        </a>
+
+        <a class="sb-link active" id="nav-games" href="games.html">
+          <span class="sb-icon">GL</span>
+          <span class="sb-label">Game Library</span>
+        </a>
+
+        <a class="sb-link" id="nav-compare" href="compare.html">
+          <span class="sb-icon">VS</span>
+          <span class="sb-label">Compare</span>
+        </a>
+
+
+      </nav>
+
+      <!-- bottom links -->
+      <div class="sb-bottom">
+        <a class="sb-link" id="nav-features" href="#" onclick="return false;">
+          <span class="sb-icon">&#9632;</span>
+          <span class="sb-label">Feature Library</span>
+        </a>
+        <a class="sb-link" id="nav-user" href="#" onclick="return false;">
+          <span class="sb-icon">&#62;</span>
+          <span class="sb-label">User Center</span>
+        </a>
+        <a class="sb-link" id="nav-settings" href="#" onclick="return false;">
+          <span class="sb-icon">&#9881;</span>
+          <span class="sb-label">Settings</span>
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- dark overlay for sidebar -->
+    <div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
+
+    <!-- =============================================
+         MAIN CONTENT
+         ============================================= -->
+    <main class="main" id="main">
+
+      <!-- top bar -->
+      <div class="topbar">
+        <button class="topbar-hamburger" id="topbar-hamburger" onclick="toggleSidebar()" aria-label="Toggle menu">&#9776;</button>
+        <h1 class="topbar-title">Game Library</h1>
+
+      </div>
+
+      <!-- scrollable page body -->
+      <div class="page-body" id="page-body">
+
+        <!-- ---- SEARCH BAR AREA ---- -->
+        <div class="gl-search-block" id="gl-search-block">
+          <div class="gl-search-inner">
+            <div class="gl-search-label">
+              <span class="section-stripe">&#9619;&#9619;&#9619;</span>
+              <span class="gl-search-heading">Search Windows PC Games</span>
+            </div>
+            <div class="gl-search-row">
+              <input
+                class="search-input"
+                id="game-search-input"
+                type="text"
+                placeholder="Search games... (e.g. Cyberpunk, Valorant, Elden Ring)"
+                autocomplete="off"
+              />
+              <button class="search-btn" id="game-search-btn" onclick="doSearch()">
+                Search
+              </button>
+            </div>
+            <div class="gl-filter-row" id="gl-filter-row">
+              <button class="gl-filter-btn active" data-sort="rating" onclick="setFilter(this, 'rating')">Top Rated</button>
+              <button class="gl-filter-btn" data-sort="released" onclick="setFilter(this, 'released')">Latest</button>
+              <button class="gl-filter-btn" data-sort="metacritic" onclick="setFilter(this, 'metacritic')">Metacritic</button>
+              <button class="gl-filter-btn" data-sort="name" onclick="setFilter(this, 'name')">A–Z</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- RESULTS SECTION ---- -->
+        <section class="section-block" id="section-results">
+
+          <div class="section-header">
+            <span class="section-stripe">&#9619;&#9619;&#9619;</span>
+            <span class="section-title" id="results-label">Popular Games</span>
+            <span class="gl-result-count" id="result-count"></span>
+          </div>
+
+          <!-- results grid -->
+          <div class="games-grid" id="game-results">
+            <p class="games-placeholder">Loading popular Windows games...</p>
+          </div>
+
+          <!-- expanded game detail panel -->
+          <div class="game-detail-panel" id="game-detail-box">
+            <!-- JS fills in when a card is clicked -->
+          </div>
+
+        </section>
+
+      </div>
+      <!-- end page-body -->
+
+    </main>
+
+  </div>
+  <!-- end app -->
+
+  <!-- toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- scripts -->
+  <script src="games.js"></script>
+
+</body>
+</html>
