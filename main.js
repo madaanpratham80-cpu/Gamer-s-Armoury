@@ -1,35 +1,35 @@
-// =====================================================
-//  Gamer's Armoury — main.js
-//  Written by: Pratham Madaan, First-year, Rishihood University
-//  Uses only Array HOFs (.map, .filter, .sort) — no for loops
-//  Keeps game data from RAWG API (Windows/PC platform = 4)
-// =====================================================
 
 
-// ------ state ------
+
+
+
+
+
+
+
 let myRig = JSON.parse(localStorage.getItem("myRig")) || null;
 
-// which model / variant the user picked in the modal
+
 let pickedModelId    = "";
 let pickedVariantIdx = "";
 
-// active operating mode removed — not needed for this project
 
-// RAWG API key — renewed March 2026
+
+
 var RAWG_KEY = "dd3a12f2f07e482493bbd21cb8e62a0e";
 
-// RAWG platform id 4 = PC / Windows
+
 var PC_PLATFORM = 4;
 
 
-// ------ laptop catalogue ------
-// hardcoded because most laptop spec APIs block browser requests (CORS)
-// covers ASUS TUF / ROG / Zephyrus / Flow, MSI, Lenovo Legion, Acer Predator / Nitro,
-// HP Omen / Victus, Dell G-Series / Alienware, Razer Blade, Gigabyte AORUS
-// GPU generations go all the way up to RTX 5090
+
+
+
+
+
 var laptops = [
 
-  // ---- ASUS TUF GAMING ----
+  
   {
     id: 1,
     brand: "ASUS",
@@ -51,7 +51,7 @@ var laptops = [
     ],
   },
 
-  // ---- ASUS ROG STRIX ----
+  
   {
     id: 3,
     brand: "ASUS",
@@ -82,7 +82,7 @@ var laptops = [
     ],
   },
 
-  // ---- ASUS ROG ZEPHYRUS ----
+  
   {
     id: 6,
     brand: "ASUS",
@@ -112,7 +112,7 @@ var laptops = [
     ],
   },
 
-  // ---- MSI ----
+  
   {
     id: 9,
     brand: "MSI",
@@ -160,7 +160,7 @@ var laptops = [
     ],
   },
 
-  // ---- LENOVO LEGION ----
+  
   {
     id: 14,
     brand: "Lenovo",
@@ -200,7 +200,7 @@ var laptops = [
     ],
   },
 
-  // ---- ACER ----
+  
   {
     id: 18,
     brand: "Acer",
@@ -230,7 +230,7 @@ var laptops = [
     ],
   },
 
-  // ---- HP ----
+  
   {
     id: 21,
     brand: "HP",
@@ -259,7 +259,7 @@ var laptops = [
     ],
   },
 
-  // ---- DELL ----
+  
   {
     id: 24,
     brand: "Dell",
@@ -288,7 +288,7 @@ var laptops = [
     ],
   },
 
-  // ---- RAZER ----
+  
   {
     id: 27,
     brand: "Razer",
@@ -317,7 +317,7 @@ var laptops = [
     ],
   },
 
-  // ---- GIGABYTE AORUS ----
+  
   {
     id: 30,
     brand: "Gigabyte",
@@ -337,7 +337,7 @@ var laptops = [
     ],
   },
 
-  // ---- LEGACY: GTX & RTX 3000 SERIES ----
+  
   {
     id: 32,
     brand: "ASUS",
@@ -435,7 +435,7 @@ var laptops = [
     ],
   },
 
-  // ---- ASUS ADDITIONAL (2021-2025) ----
+  
   {
     id: 42,
     brand: "ASUS",
@@ -513,7 +513,7 @@ var laptops = [
     ],
   },
 
-  // ---- MSI ADDITIONAL ----
+  
   {
     id: 50,
     brand: "MSI",
@@ -577,7 +577,7 @@ var laptops = [
     ],
   },
 
-  // ---- LENOVO ADDITIONAL ----
+  
   {
     id: 57,
     brand: "Lenovo",
@@ -625,7 +625,7 @@ var laptops = [
     ],
   },
 
-  // ---- ACER ADDITIONAL ----
+  
   {
     id: 62,
     brand: "Acer",
@@ -673,7 +673,7 @@ var laptops = [
     ],
   },
 
-  // ---- HP ADDITIONAL ----
+  
   {
     id: 67,
     brand: "HP",
@@ -711,7 +711,7 @@ var laptops = [
     ],
   },
 
-  // ---- DELL ADDITIONAL ----
+  
   {
     id: 71,
     brand: "Dell",
@@ -750,7 +750,7 @@ var laptops = [
     ],
   },
 
-  // ---- RAZER ADDITIONAL ----
+  
   {
     id: 75,
     brand: "Razer",
@@ -781,7 +781,7 @@ var laptops = [
     ],
   },
 
-  // ---- GIGABYTE ADDITIONAL ----
+  
   {
     id: 78,
     brand: "Gigabyte",
@@ -801,7 +801,7 @@ var laptops = [
     ],
   },
 
-  // ---- SAMSUNG ----
+  
   {
     id: 80,
     brand: "Samsung",
@@ -821,7 +821,7 @@ var laptops = [
     ],
   },
 
-  // ---- LG ----
+  
   {
     id: 82,
     brand: "LG",
@@ -835,22 +835,22 @@ var laptops = [
 ];
 
 
-// =====================================================
-//  PAGE INIT
-// =====================================================
+
+
+
 
 window.addEventListener("DOMContentLoaded", function() {
 
-  // fill the model dropdown in the modal
+  
   buildModelDropdown();
 
-  // if rig already saved from a previous visit, show it straight away
+  
   if (myRig) {
     showRigCard(myRig);
     showRigStats(myRig);
   }
 
-  // close dropdowns when clicking elsewhere on the page
+  
   document.addEventListener("click", function(e) {
     if (!e.target.closest(".custom-drop")) {
       document.querySelectorAll(".custom-drop").forEach(function(d) {
@@ -862,30 +862,30 @@ window.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// =====================================================
-//  NAVIGATION
-// =====================================================
+
+
+
 
 function handleNav(id) {
-  // remove active from all sidebar links
+  
   document.querySelectorAll(".sb-link").forEach(function(link) {
     link.classList.remove("active");
   });
   var el = document.getElementById(id);
   if (el) el.classList.add("active");
-  // close sidebar on mobile after tapping
+  
   closeSidebar();
 }
 
 function scrollToGames() {
-  // Game Library is now its own page — navigate there
+  
   window.location.href = "games.html";
 }
 
 
-// =====================================================
-//  MODAL — open / close
-// =====================================================
+
+
+
 
 function openModal() {
   document.getElementById("rig-modal").classList.add("open");
@@ -893,12 +893,12 @@ function openModal() {
 
 function closeModal() {
   document.getElementById("rig-modal").classList.remove("open");
-  // reset dropdown state so next open feels fresh
+  
   closeDrop("model-drop");
   closeDrop("variant-drop");
 }
 
-// clicking the dark overlay (not the box) closes modal
+
 function onModalOverlayClick(e) {
   if (e.target === document.getElementById("rig-modal")) {
     closeModal();
@@ -906,14 +906,14 @@ function onModalOverlayClick(e) {
 }
 
 
-// =====================================================
-//  CUSTOM DROPDOWN
-// =====================================================
+
+
+
 
 function toggleDrop(id) {
   var drop = document.getElementById(id);
   var isOpen = drop.classList.contains("open");
-  // close all first
+  
   document.querySelectorAll(".custom-drop").forEach(function(d) {
     d.classList.remove("open");
   });
@@ -924,7 +924,7 @@ function closeDrop(id) {
   document.getElementById(id).classList.remove("open");
 }
 
-// build the laptop model options using .map()
+
 function buildModelDropdown() {
   var menu = document.getElementById("model-menu");
   var html = laptops.map(function(laptop) {
@@ -933,7 +933,7 @@ function buildModelDropdown() {
   menu.innerHTML = html;
 }
 
-// user picked a laptop model
+
 function pickModel(laptopId, label) {
   pickedModelId    = laptopId;
   pickedVariantIdx = "";
@@ -941,10 +941,10 @@ function pickModel(laptopId, label) {
   document.getElementById("model-trigger-text").textContent = label;
   closeDrop("model-drop");
 
-  // reset variant dropdown text
+  
   document.getElementById("variant-trigger-text").textContent = "-- Pick a variant --";
 
-  // build the variant options for chosen laptop using .filter() + .map()
+  
   var matched = laptops.filter(function(l) { return l.id === parseInt(laptopId); });
   var chosen  = matched[0];
 
@@ -956,7 +956,7 @@ function pickModel(laptopId, label) {
   document.getElementById("variant-section").style.display = "block";
 }
 
-// user picked a variant
+
 function pickVariant(idx, label) {
   pickedVariantIdx = idx;
   document.getElementById("variant-trigger-text").textContent = label;
@@ -964,9 +964,9 @@ function pickVariant(idx, label) {
 }
 
 
-// =====================================================
-//  SAVE RIG
-// =====================================================
+
+
+
 
 function saveRig() {
   if (pickedModelId === "" || pickedVariantIdx === "") {
@@ -1000,15 +1000,15 @@ function saveRig() {
 }
 
 
-// =====================================================
-//  DISPLAY — rig card in main area
-// =====================================================
+
+
+
 
 function showRigCard(rig) {
   var noRig  = document.getElementById("no-rig-view");
   var card   = document.getElementById("rig-card");
 
-  // hide the + area
+  
   noRig.style.display = "none";
 
   card.style.display = "flex";
@@ -1154,9 +1154,9 @@ function clearRig() {
 }
 
 
-// =====================================================
-//  TOAST
-// =====================================================
+
+
+
 
 function showToast(msg) {
   var t = document.getElementById("toast");
@@ -1168,9 +1168,9 @@ function showToast(msg) {
 }
 
 
-// =====================================================
-//  SIDEBAR TOGGLE
-// =====================================================
+
+
+
 
 function openSidebar() {
   var sb  = document.getElementById("sidebar");
@@ -1202,17 +1202,17 @@ function closeSidebar() {
 }
 
 
-// =====================================================
-//  MOBILE — stats sheet, bottom nav
-// =====================================================
+
+
+
 
 function openStatsSheet() {
-  // sync content from the desktop panel before showing
+  
   var desktopContent = document.getElementById("stats-content");
   var sheetInner     = document.getElementById("stats-sheet-inner");
   if (desktopContent && sheetInner) {
     sheetInner.innerHTML = desktopContent.innerHTML;
-    // re-run animations for the cloned bars
+    
     if (myRig) {
       setTimeout(function() {
         animateBar("bar-cpu",   myRig.cpuScore);

@@ -1,12 +1,8 @@
-/* =====================================================
-   Gamer's Armoury — home.css
-   UI inspired by ASUS Armoury Crate
-   Written by Pratham Madaan — Rishihood University
-   ===================================================== */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;900&display=swap');
 
-/* color variables — all taken from the Armoury Crate reference */
+
 :root {
   --black:        #0c0c0c;
   --panel:        #111111;
@@ -26,7 +22,7 @@
   --topbar-h:     46px;
 }
 
-/* base reset */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -45,9 +41,7 @@ html, body {
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; font-family: inherit; }
 
-/* =====================================================
-   APP SHELL  — sidebar | main | stats panel
-   ===================================================== */
+
 
 .app {
   display: flex;
@@ -57,9 +51,7 @@ button { cursor: pointer; font-family: inherit; }
   background: var(--black);
 }
 
-/* =====================================================
-   SIDEBAR
-   ===================================================== */
+
 
 .sidebar {
   width: var(--sidebar-w);
@@ -80,10 +72,10 @@ button { cursor: pointer; font-family: inherit; }
   transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* hide scrollbar on sidebar */
+
 .sidebar::-webkit-scrollbar { width: 0; }
 
-/* logo area */
+
 .sb-logo {
   display: flex;
   align-items: center;
@@ -118,7 +110,7 @@ button { cursor: pointer; font-family: inherit; }
   letter-spacing: 0.5px;
 }
 
-/* close button — always visible since sidebar is a slide-over */
+
 .sb-close-btn {
   display: block;
   position: absolute;
@@ -135,7 +127,7 @@ button { cursor: pointer; font-family: inherit; }
 
 .sb-close-btn:hover { color: var(--orange); }
 
-/* nav */
+
 .sb-nav {
   display: flex;
   flex-direction: column;
@@ -184,14 +176,14 @@ button { cursor: pointer; font-family: inherit; }
   flex-shrink: 0;
 }
 
-/* bottom links group */
+
 .sb-bottom {
   border-top: 1px solid var(--border);
   padding: 8px 0;
   flex-shrink: 0;
 }
 
-/* sidebar overlay (mobile) */
+
 .sb-overlay {
   display: none;
   position: fixed;
@@ -207,14 +199,12 @@ button { cursor: pointer; font-family: inherit; }
   opacity: 1;
 }
 
-/* sidebar open state */
+
 .sidebar.open {
   transform: translateX(0);
 }
 
-/* =====================================================
-   MAIN CONTENT
-   ===================================================== */
+
 
 .main {
   flex: 1;
@@ -226,7 +216,7 @@ button { cursor: pointer; font-family: inherit; }
   background: var(--black);
 }
 
-/* top bar */
+
 .topbar {
   height: var(--topbar-h);
   display: flex;
@@ -291,7 +281,7 @@ button { cursor: pointer; font-family: inherit; }
   color: var(--orange);
 }
 
-/* scrollable body */
+
 .page-body {
   flex: 1;
   min-height: 0;
@@ -307,9 +297,7 @@ button { cursor: pointer; font-family: inherit; }
 .page-body::-webkit-scrollbar { width: 4px; }
 .page-body::-webkit-scrollbar-thumb { background: var(--border-lit); border-radius: 4px; }
 
-/* =====================================================
-   SECTION BLOCKS
-   ===================================================== */
+
 
 .section-block {
   background: var(--panel);
@@ -352,9 +340,7 @@ button { cursor: pointer; font-family: inherit; }
 
 .section-view-all:hover { opacity: 0.75; }
 
-/* =====================================================
-   RIG AREA — devices section body
-   ===================================================== */
+
 
 .rig-area {
   padding: 20px 16px;
@@ -363,7 +349,7 @@ button { cursor: pointer; font-family: inherit; }
   align-items: center;
 }
 
-/* -- No rig (add button) -- */
+
 .no-rig {
   display: flex;
   align-items: center;
@@ -417,7 +403,7 @@ button { cursor: pointer; font-family: inherit; }
 
 .no-rig-sub strong { color: var(--orange); }
 
-/* -- Saved rig card -- */
+
 .rig-card {
   display: flex;
   align-items: center;
@@ -509,9 +495,7 @@ button { cursor: pointer; font-family: inherit; }
   color: #000;
 }
 
-/* =====================================================
-   GAME LIBRARY SECTION
-   ===================================================== */
+
 
 .search-row {
   display: flex;
@@ -554,7 +538,7 @@ button { cursor: pointer; font-family: inherit; }
 .search-btn:hover { opacity: 0.88; transform: translateY(-1px); }
 .search-btn:active { transform: translateY(0); }
 
-/* games grid */
+
 .games-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -570,7 +554,7 @@ button { cursor: pointer; font-family: inherit; }
   padding: 30px 0;
 }
 
-/* individual game card */
+
 .game-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -634,7 +618,7 @@ button { cursor: pointer; font-family: inherit; }
   border-radius: 2px;
 }
 
-/* compat badges */
+
 .compat {
   font-size: 9.5px;
   font-weight: 600;
@@ -647,7 +631,7 @@ button { cursor: pointer; font-family: inherit; }
 .compat-no      { background: rgba(220, 60, 60, 0.15);   color: #f06060; border: 1px solid rgba(220,60,60,0.3); }
 .compat-unknown { background: rgba(150, 150, 150, 0.1);  color: #888;    border: 1px solid rgba(150,150,150,0.2); }
 
-/* game detail panel */
+
 .game-detail-panel {
   margin: 0 16px 16px;
   background: var(--card);
@@ -727,7 +711,7 @@ button { cursor: pointer; font-family: inherit; }
 
 .detail-close:hover { color: var(--orange); }
 
-/* loading / error states */
+
 .msg-loading,
 .msg-error {
   grid-column: 1 / -1;
@@ -739,9 +723,7 @@ button { cursor: pointer; font-family: inherit; }
 .msg-loading { color: var(--text-dim); }
 .msg-error   { color: #e05555; }
 
-/* =====================================================
-   STATS PANEL (right side)
-   ===================================================== */
+
 
 .stats-panel {
   width: var(--stats-w);
@@ -776,7 +758,7 @@ button { cursor: pointer; font-family: inherit; }
   color: var(--text-bright);
 }
 
-/* placeholder inside stats panel */
+
 .stats-placeholder {
   text-align: center;
   padding: 40px 20px;
@@ -789,7 +771,7 @@ button { cursor: pointer; font-family: inherit; }
 .stats-ph-sub  { font-size: 11px; margin-top: 4px; }
 .stats-ph-sub strong { color: var(--orange); }
 
-/* -- Stat blocks inside panel -- */
+
 .stat-group {
   border-bottom: 1px solid var(--border);
   padding: 14px 16px;
@@ -813,7 +795,7 @@ button { cursor: pointer; font-family: inherit; }
   color: var(--text-dim);
 }
 
-/* a single stat row: label — value */
+
 .stat-row {
   display: flex;
   justify-content: space-between;
@@ -833,7 +815,7 @@ button { cursor: pointer; font-family: inherit; }
   text-align: right;
 }
 
-/* thin bar under a stat (Armoury Crate style) */
+
 .stat-bar-wrap {
   height: 2px;
   background: rgba(255, 255, 255, 0.06);
@@ -852,9 +834,7 @@ button { cursor: pointer; font-family: inherit; }
 
 
 
-/* =====================================================
-   MODAL
-   ===================================================== */
+
 
 .modal-overlay {
   display: none;
@@ -915,7 +895,7 @@ button { cursor: pointer; font-family: inherit; }
   margin-bottom: 7px;
 }
 
-/* custom dropdown */
+
 .custom-drop {
   position: relative;
   margin-bottom: 20px;
@@ -989,7 +969,7 @@ button { cursor: pointer; font-family: inherit; }
   color: var(--orange);
 }
 
-/* modal action buttons */
+
 .modal-actions {
   display: flex;
   gap: 10px;
@@ -1043,9 +1023,7 @@ button { cursor: pointer; font-family: inherit; }
   color: #e06060;
 }
 
-/* =====================================================
-   TOAST
-   ===================================================== */
+
 
 .toast {
   position: fixed;
@@ -1070,9 +1048,7 @@ button { cursor: pointer; font-family: inherit; }
   opacity: 1;
 }
 
-/* =====================================================
-   MOBILE-ONLY ELEMENTS (hidden on desktop)
-   ===================================================== */
+
 
 .bottom-nav {
   display: none;
@@ -1113,7 +1089,7 @@ button { cursor: pointer; font-family: inherit; }
   border-bottom-color: var(--orange);
 }
 
-/* stats sheet (mobile) */
+
 .stats-sheet {
   display: none;
   position: fixed;
@@ -1154,14 +1130,11 @@ button { cursor: pointer; font-family: inherit; }
   z-index: 349;
 }
 
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
 
-/* The sidebar is always a fixed slide-over (hamburger toggles it).
-   On wider screens we hide the stats panel at narrow widths. */
 
-/* Hide right stats panel on tablets */
+
+
+
 @media (max-width: 1024px) {
   :root { --stats-w: 290px; }
 }
@@ -1171,16 +1144,16 @@ button { cursor: pointer; font-family: inherit; }
   .stats-panel { display: none; }
 }
 
-/* Mobile layout */
+
 @media (max-width: 640px) {
   html, body { overflow: auto; overflow-x: hidden; }
 
   .app { flex-direction: column; height: auto; min-height: 100vh; }
 
-  /* sidebar width on mobile */
+  
   .sidebar { width: 240px; }
 
-  /* main takes full width */
+  
   .main { width: 100%; overflow: visible; }
 
   .topbar {

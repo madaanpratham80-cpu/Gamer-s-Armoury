@@ -1,14 +1,7 @@
-/* =====================================================
-   Gamer's Armoury — compare.css
-   Styles specific to the Compare Hardware page (compare.html)
-   Pure vanilla CSS, mobile-first approach
-   Written by Pratham Madaan — Rishihood University
-   ===================================================== */
 
 
-/* =====================================================
-   RESTORE BANNER
-   ===================================================== */
+
+
 
 .cmp-restore-bar {
   display: flex;
@@ -65,9 +58,7 @@
 .cmp-restore-dismiss:hover { color: var(--orange); }
 
 
-/* =====================================================
-   INTRO BLOCK
-   ===================================================== */
+
 
 .cmp-intro-block {
   background: var(--panel);
@@ -84,20 +75,16 @@
 }
 
 
-/* =====================================================
-   SLOTS CONTAINER
-   Mobile-first: stacked (column).
-   >= 640px: side-by-side (row) with VS in center.
-   ===================================================== */
+
 
 .cmp-slots-container {
   display: flex;
-  flex-direction: column;    /* Mobile: stacked */
+  flex-direction: column;    
   gap: 0;
   align-items: stretch;
 }
 
-/* VS column — horizontal on mobile, vertical divider on desktop */
+
 .cmp-vs-col {
   display: flex;
   align-items: center;
@@ -105,10 +92,10 @@
   padding: 12px 0;
 }
 
-/* Desktop: side-by-side layout */
+
 @media (min-width: 640px) {
   .cmp-slots-container {
-    flex-direction: row;     /* Desktop: side by side */
+    flex-direction: row;     
     align-items: flex-start;
     gap: 0;
   }
@@ -122,9 +109,7 @@
 }
 
 
-/* =====================================================
-   VS BADGE
-   ===================================================== */
+
 
 .cmp-vs-badge {
   width: 44px;
@@ -144,27 +129,25 @@
 }
 
 
-/* =====================================================
-   SLOT CARD
-   ===================================================== */
+
 
 .cmp-slot-card {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 6px;
-  /* overflow: visible so the picker content isn't clipped */
+  
   flex: 1;
   min-width: 0;
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 
-/* Winner slot glows */
+
 .cmp-slot-card.winner-slot {
   border-color: var(--orange);
   box-shadow: 0 0 20px rgba(255, 154, 0, 0.25), 0 0 1px var(--orange) inset;
 }
 
-/* Value-winner slot gets a blue/teal glow */
+
 .cmp-slot-card.value-winner-slot {
   border-color: #00d4ff;
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.2), 0 0 1px #00d4ff inset;
@@ -200,7 +183,7 @@
 .cmp-slot-clear-btn:hover { color: #e05555; }
 
 
-/* ---- Empty state ---- */
+
 .cmp-slot-empty {
   display: flex;
   flex-direction: column;
@@ -245,13 +228,13 @@
 .cmp-slot-empty-text strong { color: var(--orange); }
 
 
-/* ---- Picker (inline expanded panel) ---- */
+
 .cmp-picker-wrap {
   display: flex;
   flex-direction: column;
 }
 
-/* Picker header row */
+
 .cmp-picker-head {
   display: flex;
   align-items: center;
@@ -283,7 +266,7 @@
 
 .cmp-picker-cancel:hover { color: #e05555; }
 
-/* Search bar */
+
 .cmp-picker-search-row {
   padding: 10px 14px;
   border-bottom: 1px solid var(--border);
@@ -314,7 +297,7 @@
 
 .cmp-picker-search::placeholder { color: var(--text-dim); }
 
-/* Laptop list (scrollable) */
+
 .cmp-laptop-list {
   max-height: 260px;
   overflow-y: auto;
@@ -328,7 +311,7 @@
 .cmp-laptop-list::-webkit-scrollbar { width: 3px; }
 .cmp-laptop-list::-webkit-scrollbar-thumb { background: var(--border-lit); border-radius: 3px; }
 
-/* Individual laptop option card */
+
 .cmp-laptop-option {
   padding: 10px 12px;
   border-radius: 5px;
@@ -412,7 +395,7 @@
   font-size: 12px;
 }
 
-/* Variant selection section */
+
 .cmp-variant-section {
   border-top: 1px solid var(--border);
   padding: 12px 14px;
@@ -428,7 +411,7 @@
   margin: 8px 0 12px;
 }
 
-/* Individual variant pill */
+
 .cmp-variant-pill {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -515,7 +498,7 @@
 .cmp-confirm-btn:hover { opacity: 0.88; transform: translateY(-1px); }
 
 
-/* ---- Filled slot details ---- */
+
 .cmp-slot-filled {
   padding: 14px;
 }
@@ -581,7 +564,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Mini score bars inside filled slot */
+
 .cmp-mini-scores {
   margin-top: 12px;
   display: flex;
@@ -627,9 +610,7 @@
 }
 
 
-/* =====================================================
-   ACTION ROW
-   ===================================================== */
+
 
 .cmp-action-row {
   display: flex;
@@ -666,9 +647,7 @@
 }
 
 
-/* =====================================================
-   WINNER BANNER
-   ===================================================== */
+
 
 .cmp-winner-banner {
   padding: 16px 20px;
@@ -743,7 +722,7 @@
   margin-top: 1px;
 }
 
-/* Tie state */
+
 .cmp-winner-banner.tie-state {
   background: rgba(150, 150, 150, 0.06);
 }
@@ -753,10 +732,7 @@
 }
 
 
-/* =====================================================
-   COMPARISON TABLE
-   Scrollable horizontally on mobile, full-width on desktop
-   ===================================================== */
+
 
 .cmp-results-section {
   animation: fadeSlideUp 0.3s ease;
@@ -778,7 +754,7 @@
 .cmp-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 480px;  /* prevents squishing on mobile — scroll instead */
+  min-width: 480px;  
 }
 
 .cmp-th {
@@ -797,7 +773,7 @@
 .cmp-th-a    { width: 33%; color: var(--orange); }
 .cmp-th-b    { width: 33%; color: #00d4ff; }
 
-/* Table rows */
+
 .cmp-td {
   padding: 10px 14px;
   font-size: 12px;
@@ -814,7 +790,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Winning cell in each row */
+
 .cmp-td.cmp-cell-win {
   color: var(--text-bright);
   font-weight: 600;
@@ -829,7 +805,7 @@
   vertical-align: middle;
 }
 
-/* A wins → highlight orange */
+
 .cmp-row-a-wins .cmp-td-a { color: var(--text-bright); font-weight: 600; }
 .cmp-row-a-wins .cmp-td-a::after {
   content: ' ▲';
@@ -837,7 +813,7 @@
   color: var(--orange);
 }
 
-/* B wins → highlight teal */
+
 .cmp-row-b-wins .cmp-td-b { color: var(--text-bright); font-weight: 600; }
 .cmp-row-b-wins .cmp-td-b::after {
   content: ' ▲';
@@ -845,14 +821,14 @@
   color: #00d4ff;
 }
 
-/* Price row special styling */
+
 .cmp-row-price .cmp-td:not(.cmp-td-spec) {
   font-family: 'Orbitron', sans-serif;
   font-size: 11px;
   color: var(--text-bright);
 }
 
-/* Score rows — with mini bars */
+
 .cmp-score-bar-wrap {
   height: 3px;
   background: rgba(255,255,255,0.06);
@@ -877,7 +853,7 @@
   transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Value badge */
+
 .cmp-value-chip {
   display: inline-block;
   background: rgba(0, 212, 255, 0.1);
@@ -891,7 +867,7 @@
 
 .cmp-value-chip.win { background: rgba(255, 154, 0, 0.1); border-color: rgba(255, 154, 0, 0.3); color: var(--orange); }
 
-/* Overall score row */
+
 .cmp-row-overall {
   background: rgba(255, 255, 255, 0.02);
 }
@@ -900,19 +876,17 @@
   color: var(--text-mid);
 }
 
-/* Zebra striping */
+
 .cmp-table tbody tr:nth-child(even) {
   background: rgba(255, 255, 255, 0.01);
 }
 
-/* hover */
+
 .cmp-table tbody tr:hover {
   background: rgba(255, 154, 0, 0.04);
 }
 
-/* =====================================================
-   TRENDING GAMES
-   ===================================================== */
+
 
 .trending-grid {
   display: grid;
@@ -1001,9 +975,7 @@
 }
 
 
-/* =====================================================
-   RESPONSIVE — tablet and up
-   ===================================================== */
+
 
 @media (min-width: 640px) {
   .cmp-slots-container {
@@ -1020,7 +992,7 @@
   }
 
   .cmp-table {
-    min-width: unset;   /* no horizontal scroll needed on wider screens */
+    min-width: unset;   
   }
 }
 
@@ -1035,7 +1007,7 @@
   }
 }
 
-/* Mobile tweaks */
+
 @media (max-width: 480px) {
   .trending-grid {
     grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));

@@ -1,41 +1,41 @@
-// =====================================================
-//  Gamer's Armoury — games.js
-//  Game Library page logic (games.html)
-//  Written by: Pratham Madaan, First-year, Rishihood University
-//  Uses only Array HOFs (.map, .filter, .sort) — no for loops
-//  Fetches Windows/PC games from RAWG API (platform id = 4)
-// =====================================================
 
 
-// ------ state ------
-// load rig from localStorage so compat badges work on this page too
+
+
+
+
+
+
+
+
+
 var myRig = JSON.parse(localStorage.getItem("myRig")) || null;
 
-// RAWG API key
+
 var RAWG_KEY = "dd3a12f2f07e482493bbd21cb8e62a0e";
 
-// RAWG platform id 4 = PC / Windows
+
 var PC_PLATFORM = 4;
 
-// active sort/filter
+
 var activeSort = "rating";
 
-// last fetched games list (for re-sorting without re-fetching)
+
 var cachedGames = [];
 
-// last query
+
 var lastQuery = "";
 
 
-// =====================================================
-//  PAGE INIT
-// =====================================================
+
+
+
 
 window.addEventListener("DOMContentLoaded", function () {
-  // load popular games on page load
+  
   fetchGames("");
 
-  // set up enter-key listener on search input
+  
   var input = document.getElementById("game-search-input");
   input.addEventListener("keydown", function (e) {
     if (e.key === "Enter") doSearch();
@@ -43,9 +43,9 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// =====================================================
-//  NAVIGATION — sidebar toggle
-// =====================================================
+
+
+
 
 function toggleSidebar() {
   var sb = document.getElementById("sidebar");
@@ -69,12 +69,12 @@ function closeSidebar() {
 }
 
 
-// =====================================================
-//  FILTER / SORT PILLS
-// =====================================================
+
+
+
 
 function setFilter(btn, sort) {
-  // update active pill
+  
   document.querySelectorAll(".gl-filter-btn").forEach(function (b) {
     b.classList.remove("active");
   });
@@ -82,11 +82,11 @@ function setFilter(btn, sort) {
 
   activeSort = sort;
 
-  // if we have cached games, re-sort them instantly without a new API call
+  
   if (cachedGames.length > 0) {
     renderGames(sortGames(cachedGames, sort));
   } else {
-    // no cache yet — fetch
+    
     fetchGames(lastQuery, sort);
   }
 }
@@ -114,9 +114,9 @@ function sortGames(games, sort) {
 }
 
 
-// =====================================================
-//  SEARCH
-// =====================================================
+
+
+
 
 function doSearch() {
   var q = document.getElementById("game-search-input").value.trim();
@@ -131,9 +131,9 @@ function loadMoreGames() {
 }
 
 
-// =====================================================
-//  FETCH LOGIC
-// =====================================================
+
+
+
 
 async function fetchGames(query, isLoadMore) {
   if (isFetching) return;
@@ -220,10 +220,10 @@ async function fetchGames(query, isLoadMore) {
       cachedGames = games;
     }
 
-    // sort
+    
     cachedGames = sortGames(cachedGames, sort);
 
-    // update labels
+    
     label.textContent = query ? 'Results for "' + query + '"' : "Popular Games";
     countEl.textContent = cachedGames.length + " games";
 
@@ -249,9 +249,9 @@ async function fetchGames(query, isLoadMore) {
 }
 
 
-// =====================================================
-//  RENDER GAMES
-// =====================================================
+
+
+
 
 function renderGames(games) {
   var grid = document.getElementById("game-results");
@@ -280,7 +280,7 @@ function renderGames(games) {
     var compat = getCompatBadge(game);
     var released = game.released ? game.released.substring(0, 4) : "";
     
-    // Optimize images down to thumbnails using RAWG crop API
+    
     var bg = game.background_image ? game.background_image.replace("media/games/", "media/crop/600/400/games/").replace("media/screenshots/", "media/crop/600/400/screenshots/") : "";
 
     return [
@@ -309,27 +309,27 @@ function renderGames(games) {
 }
 
 
-// =====================================================
-//  COMPAT BADGE
-// =====================================================
+
+
+
 
 function getCompatBadge(game) {
-  // Add Setup badge and compat logic removed entirely as requested
+  
   return "";
 }
 
 
-// =====================================================
-//  GAME DETAIL PANEL
-// =====================================================
+
+
+
 
 async function openGameDetail(gameId) {
-  // close any previously open detail
+  
   var panel = document.getElementById("game-detail-box");
   panel.innerHTML = '<p class="msg-loading" style="padding:16px 0;">Loading details...</p>';
   panel.classList.add("open");
 
-  // smooth scroll to panel
+  
   setTimeout(function () {
     panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, 80);
@@ -344,7 +344,7 @@ async function openGameDetail(gameId) {
     var res  = await fetch(finalUrl);
     var game = await res.json();
 
-    // extract fields using .map()
+    
     var platforms  = game.platforms  ? game.platforms.map(function (p)  { return p.platform.name; }).join(" · ") : "Unknown";
     var devs       = game.developers ? game.developers.map(function (d) { return d.name; }).join(", ") : "Unknown";
     var publishers = game.publishers ? game.publishers.map(function (p) { return p.name; }).join(", ") : "Unknown";
@@ -387,9 +387,9 @@ function closeGameDetail() {
 }
 
 
-// =====================================================
-//  TOAST
-// =====================================================
+
+
+
 
 function showToast(msg) {
   var t = document.getElementById("toast");
@@ -399,9 +399,9 @@ function showToast(msg) {
 }
 
 
-// =====================================================
-//  HELPERS
-// =====================================================
+
+
+
 
 function escapeHtml(str) {
   if (!str) return "";

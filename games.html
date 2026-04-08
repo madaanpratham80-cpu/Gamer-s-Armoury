@@ -15,24 +15,22 @@
 
 <body>
 
-  <!-- app wrapper -->
+  
   <div class="app" id="app">
 
-    <!-- =============================================
-         SIDEBAR
-         ============================================= -->
+    
     <aside class="sidebar" id="sidebar">
 
-      <!-- logo -->
+      
       <div class="sb-logo">
         <div class="sb-logo-icon">GA</div>
         <div class="sb-logo-text">Gamer's<br>Armoury</div>
       </div>
 
-      <!-- hamburger close -->
+      
       <button class="sb-close-btn" id="sb-close-btn" onclick="closeSidebar()">&#10005;</button>
 
-      <!-- nav -->
+      
       <nav class="sb-nav">
 
         <a class="sb-link" id="nav-home" href="index.html">
@@ -58,7 +56,7 @@
 
       </nav>
 
-      <!-- bottom links -->
+      
       <div class="sb-bottom">
         <a class="sb-link" id="nav-features" href="#" onclick="return false;">
           <span class="sb-icon">&#9632;</span>
@@ -76,25 +74,23 @@
 
     </aside>
 
-    <!-- dark overlay for sidebar -->
+    
     <div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
 
-    <!-- =============================================
-         MAIN CONTENT
-         ============================================= -->
+    
     <main class="main" id="main">
 
-      <!-- top bar -->
+      
       <div class="topbar">
         <button class="topbar-hamburger" id="topbar-hamburger" onclick="toggleSidebar()" aria-label="Toggle menu">&#9776;</button>
         <h1 class="topbar-title">Game Library</h1>
 
       </div>
 
-      <!-- scrollable page body -->
+      
       <div class="page-body" id="page-body">
 
-        <!-- ---- SEARCH BAR AREA ---- -->
+        
         <div class="gl-search-block" id="gl-search-block">
           <div class="gl-search-inner">
             <div class="gl-search-label">
@@ -122,7 +118,7 @@
           </div>
         </div>
 
-        <!-- ---- RESULTS SECTION ---- -->
+        
         <section class="section-block" id="section-results">
 
           <div class="section-header">
@@ -131,30 +127,30 @@
             <span class="gl-result-count" id="result-count"></span>
           </div>
 
-          <!-- results grid -->
+          
           <div class="games-grid" id="game-results">
             <p class="games-placeholder">Loading popular Windows games...</p>
           </div>
 
-          <!-- expanded game detail panel -->
+          
           <div class="game-detail-panel" id="game-detail-box">
-            <!-- JS fills in when a card is clicked -->
+            
           </div>
 
         </section>
 
       </div>
-      <!-- end page-body -->
+      
 
     </main>
 
   </div>
-  <!-- end app -->
+  
 
-  <!-- toast -->
+  
   <div class="toast" id="toast"></div>
 
-  <!-- scripts -->
+  
   <script src="games.js"></script>
 
 </body>

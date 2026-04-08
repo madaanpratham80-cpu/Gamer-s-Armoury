@@ -1,57 +1,57 @@
-// =====================================================
-//  Gamer's Armoury — compare.js
-//  Hardware Comparison Tool (Milestone 2)
-//  Written by: Pratham Madaan, First-year, Rishihood University
-//  Rules: Vanilla JS only | No for/while loops | Only Array HOFs
-//  Simple variable names + Hinglish comments (for professor!)
-// =====================================================
 
 
-// ---- State variables (simple names as instructed) ----
-var laptopOne    = null;   // Slot A ka confirmed laptop object
-var laptopTwo    = null;   // Slot B ka confirmed laptop object
-
-var pickedModelA    = null;  // Slot A: user ne model click kiya (laptop id)
-var pickedModelB    = null;  // Slot B: user ne model click kiya (laptop id)
-var pickedVariantA  = null;  // Slot A: user ne variant index choose kiya
-var pickedVariantB  = null;  // Slot B: user ne variant index choose kiya
 
 
-// =====================================================
-//  MRP PRICE LIST — fixed local data (INR)
-//  "Market Retail Price" for each laptop ID
-// =====================================================
 
-// Yeh fixed prices hain — Noteb API se price nahi milta
-// isliye hum local object use karte hain
+
+
+
+
+
+var laptopOne    = null;   
+var laptopTwo    = null;   
+
+var pickedModelA    = null;  
+var pickedModelB    = null;  
+var pickedVariantA  = null;  
+var pickedVariantB  = null;  
+
+
+
+
+
+
+
+
+
 var laptopMRP = {
-  1:  72990,   // ASUS TUF Gaming A15 (2024)
-  2:  89990,   // ASUS TUF Gaming F16 (2025)
-  3:  149990,  // ASUS ROG Strix G16 (2024)
-  4:  289990,  // ASUS ROG Strix SCAR 16 (2025)
-  5:  319990,  // ASUS ROG Strix G18 (2025)
-  6:  139990,  // ASUS ROG Zephyrus G14 (2024)
-  7:  179990,  // ASUS ROG Zephyrus G16 (2025)
-  9:  69990,   // MSI Katana 15 (2024)
-  10: 259990,  // MSI Raider GE78 HX (2025)
-  14: 84990,   // Lenovo Legion 5i Gen 9 (2024)
-  15: 174990,  // Lenovo Legion 7i Gen 9 (2024)
-  18: 89999,   // Acer Predator Helios Neo 16 (2024)
-  19: 219990,  // Acer Predator Helios 18 (2024)
-  21: 109990,  // HP Omen 16 (2024)
-  23: 59990,   // HP Victus 16 (2024)
-  24: 79990,   // Dell G16 Gaming (2024)
-  25: 189990,  // Alienware m16 R2 (2024)
-  27: 149990,  // Razer Blade 14 (2024)
-  28: 349990,  // Razer Blade 16 (2025)
+  1:  72990,   
+  2:  89990,   
+  3:  149990,  
+  4:  289990,  
+  5:  319990,  
+  6:  139990,  
+  7:  179990,  
+  9:  69990,   
+  10: 259990,  
+  14: 84990,   
+  15: 174990,  
+  18: 89999,   
+  19: 219990,  
+  21: 109990,  
+  23: 59990,   
+  24: 79990,   
+  25: 189990,  
+  27: 149990,  
+  28: 349990,  
 };
 
 
-// =====================================================
-//  LAPTOP DATA — curated 15 laptops for comparison
-//  (Subset of the full database from main.js)
-//  har laptop mein brand, name, aur variants hain
-// =====================================================
+
+
+
+
+
 
 var compareDevices = [
   {
@@ -161,27 +161,27 @@ var compareDevices = [
 ];
 
 
-// =====================================================
-//  PAGE INIT
-// =====================================================
+
+
+
 
 window.addEventListener("DOMContentLoaded", function () {
 
-  // Agar koi last compared data localStorage mein hai toh restore offer karo
+  
   checkLastCompared();
 
-  // Noteb API try karo — agar kaam kare toh good, warna local data use hoga
+  
   tryNotebAPI();
 
-  // Load RAWG trending games at bottom
+  
   fetchTrendingGames();
 });
 
 
-// =====================================================
-//  NOTEB API — attempt (with fallback)
-//  If CORS ya error aaye toh local data use karo
-// =====================================================
+
+
+
+
 
 async function tryNotebAPI() {
   try {
@@ -194,9 +194,9 @@ async function tryNotebAPI() {
 }
 
 
-// =====================================================
-//  SIDEBAR TOGGLE
-// =====================================================
+
+
+
 
 function toggleSidebar() {
   var sb = document.getElementById("sidebar");
@@ -219,30 +219,30 @@ function closeSidebar() {
 }
 
 
-// =====================================================
-//  OPEN PICKER — the main UI that appears when + is clicked
-//  Generates: search bar + scrollable laptop list + variant pills
-// =====================================================
+
+
+
+
 
 function openPicker(slot) {
-  var slotL    = slot.toLowerCase();                     // 'a' or 'b'
+  var slotL    = slot.toLowerCase();                     
   var emptyId  = "slot-" + slotL + "-empty";
   var pickerId = "picker-" + slotL;
   var pickerEl = document.getElementById(pickerId);
 
-  // Khaali empty state chhupao
+  
   document.getElementById(emptyId).style.display = "none";
 
-  // Pura picker UI generate karo
-  // Ab koi hidden dropdown nahi — sab visible hai!
+  
+  
   pickerEl.innerHTML = [
-    // --- Header row with title and cancel link ---
+    
     '<div class="cmp-picker-head">',
     '  <span class="cmp-picker-title">Select a Laptop</span>',
     '  <button class="cmp-picker-cancel" onclick="cancelPicker(\'' + slot + '\')">Cancel</button>',
     '</div>',
 
-    // --- Search input ---
+    
     '<div class="cmp-picker-search-row">',
     '  <input class="cmp-picker-search"',
     '         id="picker-search-' + slotL + '"',
@@ -252,12 +252,12 @@ function openPicker(slot) {
     '         autocomplete="off" />',
     '</div>',
 
-    // --- Scrollable laptop cards list ---
+    
     '<div class="cmp-laptop-list" id="laptop-list-' + slotL + '">',
     '  <!-- renderPickerList() fills this -->',
     '</div>',
 
-    // --- Variant selection (shown after laptop is clicked) ---
+    
     '<div class="cmp-variant-section" id="variant-section-' + slotL + '" style="display:none;">',
     '  <div class="cmp-picker-label" style="margin-bottom:0;">Choose a Variant:</div>',
     '  <div class="cmp-variant-pills" id="variant-pills-' + slotL + '">',
@@ -269,13 +269,13 @@ function openPicker(slot) {
     '</div>',
   ].join("");
 
-  // Picker dikhao
+  
   pickerEl.style.display = "block";
 
-  // Pura list render karo (empty query = saare as laptops)
+  
   renderPickerList(slot, "");
 
-  // Search box focus karo
+  
   setTimeout(function () {
     var searchEl = document.getElementById("picker-search-" + slotL);
     if (searchEl) searchEl.focus();
@@ -283,10 +283,10 @@ function openPicker(slot) {
 }
 
 
-// =====================================================
-//  RENDER PICKER LIST — shows all (or filtered) laptops as cards
-//  Uses .filter() and .map() — no loops!
-// =====================================================
+
+
+
+
 
 function renderPickerList(slot, query) {
   var slotL  = slot.toLowerCase();
@@ -295,10 +295,10 @@ function renderPickerList(slot, query) {
 
   var trimQ = query ? query.toLowerCase().trim() : "";
 
-  // .filter() se matching laptops nikalo
+  
   var filtered = compareDevices.filter(function (laptop) {
     if (!trimQ) return true;
-    // Search in name, brand, gpu, cpu
+    
     var haystack = (
       laptop.name.toLowerCase() + " " +
       laptop.brand.toLowerCase() + " " +
@@ -312,15 +312,15 @@ function renderPickerList(slot, query) {
     return;
   }
 
-  // Track which model is selected in this slot (to show highlight)
+  
   var selectedId = slot === "A" ? pickedModelA : pickedModelB;
 
-  // .map() se har laptop ke liye ek card banana — no for loop!
+  
   var cards = filtered.map(function (laptop) {
     var price    = laptopMRP[laptop.id] || 0;
     var priceStr = price ? "\u20B9" + price.toLocaleString("en-IN") : "N/A";
 
-    // Top GPU — first variant ki GPU GPU name from full label
+    
     var topGPU = laptop.variants[0].gpu
       .replace("NVIDIA ", "")
       .replace("AMD Radeon ", "");
@@ -349,41 +349,41 @@ function renderPickerList(slot, query) {
 }
 
 
-// =====================================================
-//  SELECT LAPTOP FROM LIST — user ne ek laptop card click kiya
-//  Highlights selected card + shows variant pills below
-// =====================================================
+
+
+
+
 
 function selectLaptopFromList(slot, laptopId) {
   var slotL = slot.toLowerCase();
 
-  // State update
+  
   if (slot === "A") { pickedModelA = laptopId;   pickedVariantA = null; }
   else              { pickedModelB = laptopId;   pickedVariantB = null; }
 
-  // Saare option cards se .selected hata do — .forEach() use karo
+  
   document.querySelectorAll(".cmp-laptop-option").forEach(function (el) {
     el.classList.remove("selected");
   });
 
-  // Selected card ko highlight karo
+  
   var selectedEl = document.getElementById("opt-" + slotL + "-" + laptopId);
   if (selectedEl) {
     selectedEl.classList.add("selected");
-    // Scroll the selected card into view smoothly
+    
     selectedEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
-  // Matching laptop data nikalo — .filter() use karo
+  
   var matchArr = compareDevices.filter(function (l) {
     return l.id === parseInt(laptopId);
   });
   var laptop = matchArr[0];
   var price  = laptopMRP[laptop.id] || 0;
 
-  // Variant pills banana — .map() use karo
+  
   var pillsHtml = laptop.variants.map(function (v, i) {
-    // GPU name — NVIDIA prefix hata do for cleaner display
+    
     var gpuName   = v.gpu.replace("NVIDIA ", "").replace("AMD Radeon ", "");
     var priceStr  = price ? "\u20B9" + price.toLocaleString("en-IN") : "N/A";
 
@@ -399,48 +399,48 @@ function selectLaptopFromList(slot, laptopId) {
     ].join("");
   });
 
-  // Variant section mein pills daalo
+  
   var pillsEl  = document.getElementById("variant-pills-" + slotL);
   var sectEl   = document.getElementById("variant-section-" + slotL);
   var confirmEl = document.getElementById("confirm-btn-" + slotL);
 
   pillsEl.innerHTML              = pillsHtml.join("");
   sectEl.style.display           = "block";
-  confirmEl.style.display        = "none";   // Chhupao jab tak variant select na ho
+  confirmEl.style.display        = "none";   
 
-  // Variant section tak scroll karo
+  
   setTimeout(function () {
     sectEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, 80);
 }
 
 
-// =====================================================
-//  SELECT VARIANT PILL — user ne ek variant button click kiya
-// =====================================================
+
+
+
 
 function selectVariantPill(slot, variantIdx, btn) {
-  // State save karo
+  
   if (slot === "A") pickedVariantA = variantIdx;
   else              pickedVariantB = variantIdx;
 
-  // Saare pills se selected hata do
+  
   btn.closest(".cmp-variant-pills").querySelectorAll(".cmp-variant-pill").forEach(function (p) {
     p.classList.remove("selected");
   });
 
-  // Is pill ko select karo
+  
   btn.classList.add("selected");
 
-  // Confirm button dikhao
+  
   var slotL = slot.toLowerCase();
   document.getElementById("confirm-btn-" + slotL).style.display = "block";
 }
 
 
-// =====================================================
-//  CANCEL PICKER — user ne cancel click kiya
-// =====================================================
+
+
+
 
 function cancelPicker(slot) {
   var slotL    = slot.toLowerCase();
@@ -448,7 +448,7 @@ function cancelPicker(slot) {
   var emptyId  = "slot-" + slotL + "-empty";
   var filledId = "slot-" + slotL + "-filled";
 
-  // Agar pehle se koi confirmed laptop hai toh filled state dikhao
+  
   var hasConfirmed = (slot === "A" && laptopOne) || (slot === "B" && laptopTwo);
 
   document.getElementById(pickerId).style.display = "none";
@@ -460,22 +460,22 @@ function cancelPicker(slot) {
 }
 
 
-// =====================================================
-//  CONFIRM SLOT — user ne "Confirm Selection" click kiya
-//  Ab filled state dikhao with laptop info
-// =====================================================
+
+
+
+
 
 function confirmSlot(slot) {
   var modelId    = slot === "A" ? pickedModelA    : pickedModelB;
   var variantIdx = slot === "A" ? pickedVariantA  : pickedVariantB;
 
-  // Validation — dono select kiye hain?
+  
   if (!modelId || variantIdx === null || variantIdx === undefined) {
     showToast("Ek model aur uska variant dono select karo!");
     return;
   }
 
-  // .filter() se matching laptop nikalo
+  
   var matchArr = compareDevices.filter(function (l) {
     return l.id === parseInt(modelId);
   });
@@ -483,7 +483,7 @@ function confirmSlot(slot) {
   var variant = laptop.variants[parseInt(variantIdx)];
   var price   = laptopMRP[laptop.id] || 0;
 
-  // Rig object banao — yeh compare table mein use hoga
+  
   var rigData = {
     laptopId:   laptop.id,
     brand:      laptop.brand,
@@ -497,21 +497,21 @@ function confirmSlot(slot) {
     price:      price,
   };
 
-  // State update karo
+  
   if (slot === "A") laptopOne = rigData;
   else              laptopTwo = rigData;
 
-  // Slot card ka filled UI render karo
+  
   renderFilledSlot(slot, rigData);
 
-  // Check: dono filled? Toh compare button dikhao
+  
   checkBothSlotsFilled();
 }
 
 
-// =====================================================
-//  CLEAR SLOT — X button click
-// =====================================================
+
+
+
 
 function clearSlot(slot) {
   var slotL = slot.toLowerCase();
@@ -528,21 +528,21 @@ function clearSlot(slot) {
     document.getElementById("slot-b-card").classList.remove("winner-slot", "value-winner-slot");
   }
 
-  // Filled aur picker chhupao, empty dikhao
+  
   document.getElementById("slot-" + slotL + "-filled").style.display  = "none";
   document.getElementById("picker-" + slotL).style.display            = "none";
   document.getElementById("slot-" + slotL + "-empty").style.display   = "flex";
   document.getElementById("clear-btn-" + slotL).style.display         = "none";
 
-  // Action row aur results chhupao
+  
   document.getElementById("cmp-action-row").style.display = "none";
   document.getElementById("cmp-results").style.display    = "none";
 }
 
 
-// =====================================================
-//  RENDER FILLED SLOT — shows selected laptop's info card
-// =====================================================
+
+
+
 
 function renderFilledSlot(slot, rig) {
   var slotL    = slot.toLowerCase();
@@ -554,7 +554,7 @@ function renderFilledSlot(slot, rig) {
     ? "\u20B9" + rig.price.toLocaleString("en-IN")
     : "Price N/A";
 
-  // Value score = GPU score per lakh rupees
+  
   var valueScore = rig.price > 0
     ? (rig.gpuScore / (rig.price / 100000)).toFixed(1)
     : "N/A";
@@ -588,12 +588,12 @@ function renderFilledSlot(slot, rig) {
     '</div>',
   ].join("");
 
-  // Picker chhupao, filled dikhao
+  
   document.getElementById(pickerId).style.display  = "none";
   document.getElementById(filledId).style.display  = "block";
   document.getElementById(clearId).style.display   = "inline-block";
 
-  // Mini bars animate karo
+  
   setTimeout(function () {
     animateMiniBar("mini-cpu-" + slotL, rig.cpuScore);
     animateMiniBar("mini-gpu-" + slotL, rig.gpuScore);
@@ -610,30 +610,30 @@ function animateMiniBar(barId, targetPct) {
 }
 
 
-// =====================================================
-//  CHECK BOTH SLOTS — show/hide compare button
-// =====================================================
+
+
+
 
 function checkBothSlotsFilled() {
   if (laptopOne && laptopTwo) {
     document.getElementById("cmp-action-row").style.display = "flex";
-    doCompare();  // Auto-compare jab dono ready hain
+    doCompare();  
   } else {
     document.getElementById("cmp-action-row").style.display = "none";
   }
 }
 
 
-// =====================================================
-//  WINNER LOGIC — GPU score aur Value score compare karo
-// =====================================================
+
+
+
 
 function getWinner(rigA, rigB) {
   var gpuWinner = rigA.gpuScore > rigB.gpuScore ? "A"
     : rigB.gpuScore > rigA.gpuScore ? "B"
     : "tie";
 
-  // Value = GPU score per lakh rupees (paisa wasool!)
+  
   var valueA = rigA.price > 0 ? rigA.gpuScore / (rigA.price / 100000) : 0;
   var valueB = rigB.price > 0 ? rigB.gpuScore / (rigB.price / 100000) : 0;
 
@@ -644,16 +644,16 @@ function getWinner(rigA, rigB) {
   return {
     gpuWinner:     gpuWinner,
     valueWinner:   valueWinner,
-    overallWinner: gpuWinner,  // GPU winner = overall winner
+    overallWinner: gpuWinner,  
     valueA:        parseFloat(valueA.toFixed(2)),
     valueB:        parseFloat(valueB.toFixed(2)),
   };
 }
 
 
-// =====================================================
-//  DO COMPARE — main comparison render
-// =====================================================
+
+
+
 
 function doCompare() {
   if (!laptopOne || !laptopTwo) {
@@ -663,10 +663,10 @@ function doCompare() {
 
   var result = getWinner(laptopOne, laptopTwo);
 
-  // Winner banner
+  
   renderWinnerBanner(result);
 
-  // Spec rows array — .map() se table banana
+  
   var specRows = [
     {
       label: "Price (MRP)",
@@ -735,13 +735,13 @@ function doCompare() {
     },
   ];
 
-  // .map() se rows banana — no for loop!
+  
   var rowsHtml = specRows.map(function (spec) {
     var rowClass = spec.rowClass || "";
     if (spec.winner === "A") rowClass += " cmp-row-a-wins";
     if (spec.winner === "B") rowClass += " cmp-row-b-wins";
 
-    // Cell A
+    
     var cellA = spec.aVal;
     if (spec.aBar) {
       cellA += '<div class="cmp-score-bar-wrap"><div class="cmp-score-bar-fill-a" id="' + spec.aBarId + '" style="width:0%"></div></div>';
@@ -751,7 +751,7 @@ function doCompare() {
       cellA = '<span class="' + ca + '">' + spec.aVal + '</span>';
     }
 
-    // Cell B
+    
     var cellB = spec.bVal;
     if (spec.bBar) {
       cellB += '<div class="cmp-score-bar-wrap"><div class="cmp-score-bar-fill-b" id="' + spec.bBarId + '" style="width:0%"></div></div>';
@@ -770,14 +770,14 @@ function doCompare() {
     ].join("");
   });
 
-  // Table headers
+  
   document.getElementById("cmp-th-a").textContent = laptopOne.brand + " — " + laptopOne.name.split("(")[0].trim();
   document.getElementById("cmp-th-b").textContent = laptopTwo.brand + " — " + laptopTwo.name.split("(")[0].trim();
 
   document.getElementById("cmp-tbody").innerHTML = rowsHtml.join("");
   document.getElementById("cmp-results").style.display = "block";
 
-  // Score bars animate karo
+  
   setTimeout(function () {
     specRows
       .filter(function (s) { return s.aBar; })
@@ -787,22 +787,22 @@ function doCompare() {
       });
   }, 100);
 
-  // Winner slot highlight
+  
   highlightWinnerSlot(result.overallWinner, result.valueWinner);
 
-  // localStorage mein save karo
+  
   saveLastCompared();
 
-  // Smooth scroll to results
+  
   setTimeout(function () {
     document.getElementById("cmp-results").scrollIntoView({ behavior: "smooth", block: "start" });
   }, 150);
 }
 
 
-// =====================================================
-//  RENDER WINNER BANNER
-// =====================================================
+
+
+
 
 function renderWinnerBanner(result) {
   var banner = document.getElementById("cmp-winner-banner");
@@ -850,9 +850,9 @@ function renderWinnerBanner(result) {
 }
 
 
-// =====================================================
-//  HIGHLIGHT WINNER SLOT WITH NEON BORDER
-// =====================================================
+
+
+
 
 function highlightWinnerSlot(gpuWinner, valueWinner) {
   document.getElementById("slot-a-card").classList.remove("winner-slot", "value-winner-slot");
@@ -868,9 +868,9 @@ function highlightWinnerSlot(gpuWinner, valueWinner) {
 }
 
 
-// =====================================================
-//  SCORE BAR ANIMATE
-// =====================================================
+
+
+
 
 function animateBar(barId, targetPct) {
   var bar = document.getElementById(barId);
@@ -882,9 +882,9 @@ function animateBar(barId, targetPct) {
 }
 
 
-// =====================================================
-//  LOCALSTORAGE — save / restore last compared pair
-// =====================================================
+
+
+
 
 function saveLastCompared() {
   localStorage.setItem("lastCompared", JSON.stringify({ laptopOne: laptopOne, laptopTwo: laptopTwo }));
@@ -928,9 +928,9 @@ function dismissRestore() {
 }
 
 
-// =====================================================
-//  TOAST
-// =====================================================
+
+
+
 
 function showToast(msg) {
   var t = document.getElementById("toast");
@@ -940,9 +940,9 @@ function showToast(msg) {
 }
 
 
-// =====================================================
-//  TRENDING GAMES SHOWCASE (RAWG API)
-// =====================================================
+
+
+
 
 var RAWG_KEY = "dd3a12f2f07e482493bbd21cb8e62a0e";
 
@@ -953,14 +953,14 @@ async function fetchTrendingGames() {
   try {
     var rawgUrl = "https://api.rawg.io/api/games?key=" + RAWG_KEY + "&platforms=4&ordering=-added&page_size=8";
     
-    // Bypass CORS if running locally via file://
+    
     var isFile   = window.location.protocol === "file:";
     var finalUrl = isFile ? "https://corsproxy.io/?url=" + encodeURIComponent(rawgUrl) : rawgUrl;
 
     var res  = await fetch(finalUrl);
     var data = await res.json();
 
-    // Filter out entries without a cover image, and specific unwanted games
+    
     var games = data.results.filter(function (g) { 
         if (!g.background_image) return false;
         var nameL = g.name.toLowerCase();
@@ -974,9 +974,9 @@ async function fetchTrendingGames() {
       return;
     }
 
-    // Render cards using .map() — no for loops!
+    
     var cardsHtml = games.map(function (game) {
-      // Metacritic color badge logic
+      
       var mc = game.metacritic;
       var mcClass = "mc-none";
       if (mc) {
@@ -986,7 +986,7 @@ async function fetchTrendingGames() {
       }
       var mcDisplay = mc ? mc : "N/A";
 
-      // Extract stores using map
+      
       var storeTags = "";
       if (game.stores && game.stores.length > 0) {
         storeTags = game.stores.map(function (s) {

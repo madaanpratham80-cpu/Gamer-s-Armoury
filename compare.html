@@ -43,7 +43,7 @@
           <span class="sb-label">Game Library</span>
         </a>
 
-        <!-- Compare is active on this page -->
+        
         <a class="sb-link active" href="compare.html">
           <span class="sb-icon">VS</span>
           <span class="sb-label">Compare</span>
@@ -71,9 +71,7 @@
 
     <div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
 
-    <!-- =============================================
-         MAIN CONTENT
-         ============================================= -->
+    
     <main class="main" id="main">
 
       <div class="topbar">
@@ -84,7 +82,7 @@
 
       <div class="page-body" id="page-body">
 
-        <!-- ---- LAST COMPARED RESTORE BANNER ---- -->
+        
         <div class="cmp-restore-bar" id="cmp-restore-bar" style="display:none;">
           <span class="cmp-restore-icon">&#9854;</span>
           <span class="cmp-restore-text" id="cmp-restore-text">Restore last comparison?</span>
@@ -94,7 +92,7 @@
           </div>
         </div>
 
-        <!-- ---- INTRO ---- -->
+        
         <div class="cmp-intro-block">
           <div class="section-header">
             <span class="section-stripe">&#9619;&#9619;&#9619;</span>
@@ -103,18 +101,18 @@
           <p class="cmp-intro-text">Select two laptops below and see a full side-by-side breakdown — benchmarks, price, and the overall winner.</p>
         </div>
 
-        <!-- ---- SELECTION SLOTS ---- -->
-        <!-- On mobile: stacked vertically. On desktop: side by side with VS in center -->
+        
+        
         <div class="cmp-slots-container" id="cmp-slots-container">
 
-          <!-- === SLOT A === -->
+          
           <div class="cmp-slot-card" id="slot-a-card">
             <div class="cmp-slot-header">
               <span class="cmp-slot-label">Laptop A</span>
               <button class="cmp-slot-clear-btn" id="clear-btn-a" onclick="clearSlot('A')" style="display:none;" title="Clear slot">&#10005;</button>
             </div>
 
-            <!-- Empty state — user hasn't selected yet -->
+            
             <div class="cmp-slot-empty" id="slot-a-empty">
               <div class="cmp-add-ring" onclick="openPicker('A')">
                 <span class="cmp-add-plus">+</span>
@@ -122,23 +120,23 @@
               <p class="cmp-slot-empty-text">Click <strong>+</strong> to select a laptop</p>
             </div>
 
-            <!-- Picker — JS generates the entire UI here -->
+            
             <div class="cmp-picker-wrap" id="picker-a" style="display:none;">
-              <!-- filled by openPicker() in compare.js -->
+              
             </div>
 
-            <!-- Filled state — shows laptop details -->
+            
             <div class="cmp-slot-filled" id="slot-a-filled" style="display:none;">
-              <!-- JS fills this -->
+              
             </div>
           </div>
 
-          <!-- VS BADGE — center column -->
+          
           <div class="cmp-vs-col">
             <div class="cmp-vs-badge">VS</div>
           </div>
 
-          <!-- === SLOT B === -->
+          
           <div class="cmp-slot-card" id="slot-b-card">
             <div class="cmp-slot-header">
               <span class="cmp-slot-label">Laptop B</span>
@@ -152,20 +150,20 @@
               <p class="cmp-slot-empty-text">Click <strong>+</strong> to select a laptop</p>
             </div>
 
-            <!-- Picker — JS generates the entire UI here -->
+            
             <div class="cmp-picker-wrap" id="picker-b" style="display:none;">
-              <!-- filled by openPicker() in compare.js -->
+              
             </div>
 
             <div class="cmp-slot-filled" id="slot-b-filled" style="display:none;">
-              <!-- JS fills this -->
+              
             </div>
           </div>
 
         </div>
-        <!-- end slots container -->
+        
 
-        <!-- ---- COMPARE ACTION ROW ---- -->
+        
         <div class="cmp-action-row" id="cmp-action-row" style="display:none;">
           <button class="cmp-compare-btn" id="cmp-compare-btn" onclick="doCompare()">
             &#9889; Compare Now
@@ -173,21 +171,21 @@
           <p class="cmp-action-hint">Both laptops selected — click to see the full breakdown</p>
         </div>
 
-        <!-- ---- COMPARISON RESULTS ---- -->
+        
         <section class="section-block cmp-results-section" id="cmp-results" style="display:none;">
 
-          <!-- Winner banner -->
+          
           <div class="cmp-winner-banner" id="cmp-winner-banner">
-            <!-- JS fills this -->
+            
           </div>
 
-          <!-- Comparison table header -->
+          
           <div class="section-header">
             <span class="section-stripe">&#9619;&#9619;&#9619;</span>
             <span class="section-title">Spec Breakdown</span>
           </div>
 
-          <!-- Table -->
+          
           <div class="cmp-table-scroll">
             <table class="cmp-table" id="cmp-table">
               <thead>
@@ -198,13 +196,13 @@
                 </tr>
               </thead>
               <tbody id="cmp-tbody">
-                <!-- JS fills this -->
+                
               </tbody>
             </table>
           </div>
         </section>
 
-        <!-- ---- TRENDING GAMES SHOWCASE ---- -->
+        
         <section class="section-block" id="section-trending-games" style="margin-top: 20px;">
           <div class="section-header">
             <span class="section-stripe">&#9619;&#9619;&#9619;</span>
@@ -216,12 +214,12 @@
         </section>
 
       </div>
-      <!-- end page-body -->
+      
 
     </main>
 
   </div>
-  <!-- end app -->
+  
 
   <div class="toast" id="toast"></div>
 
