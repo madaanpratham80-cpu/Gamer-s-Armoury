@@ -877,11 +877,6 @@ function handleNav(id) {
   closeSidebar();
 }
 
-function scrollToGames() {
-  
-  window.location.href = "games.html";
-}
-
 
 
 

@@ -173,8 +173,6 @@ window.addEventListener("DOMContentLoaded", function () {
   
   tryNotebAPI();
 
-  
-  fetchTrendingGames();
 });
 
 
@@ -944,77 +942,3 @@ function showToast(msg) {
 
 
 
-var RAWG_KEY = "dd3a12f2f07e482493bbd21cb8e62a0e";
-
-async function fetchTrendingGames() {
-  var grid = document.getElementById("trending-games-grid");
-  if (!grid) return;
-
-  try {
-    var rawgUrl = "https://api.rawg.io/api/games?key=" + RAWG_KEY + "&platforms=4&ordering=-added&page_size=8";
-    
-    
-    var isFile   = window.location.protocol === "file:";
-    var finalUrl = isFile ? "https://corsproxy.io/?url=" + encodeURIComponent(rawgUrl) : rawgUrl;
-
-    var res  = await fetch(finalUrl);
-    var data = await res.json();
-
-    
-    var games = data.results.filter(function (g) { 
-        if (!g.background_image) return false;
-        var nameL = g.name.toLowerCase();
-        if (nameL.indexOf("charlie") !== -1) return false;
-        if (nameL.indexOf("princess maker 2") !== -1) return false;
-        return true;
-    }).slice(0, 8);
-
-    if (games.length === 0) {
-      grid.innerHTML = '<p class="cmp-slot-empty-text" style="grid-column: 1 / -1; text-align: center;">No trending games found right now.</p>';
-      return;
-    }
-
-    
-    var cardsHtml = games.map(function (game) {
-      
-      var mc = game.metacritic;
-      var mcClass = "mc-none";
-      if (mc) {
-        if (mc >= 80) mcClass = "mc-green";
-        else if (mc >= 50) mcClass = "mc-yellow";
-        else mcClass = "mc-red";
-      }
-      var mcDisplay = mc ? mc : "N/A";
-
-      
-      var storeTags = "";
-      if (game.stores && game.stores.length > 0) {
-        storeTags = game.stores.map(function (s) {
-          return '<span class="trending-store-tag">' + (s.store ? s.store.name : "") + '</span>';
-        }).join("");
-      }
-
-      var bg = game.background_image ? game.background_image.replace("media/games/", "media/crop/600/400/games/").replace("media/screenshots/", "media/crop/600/400/screenshots/") : "";
-
-      return [
-        '<div class="trending-card">',
-        '  <img src="' + bg + '" class="trending-thumb" alt="' + game.name + '" loading="lazy" />',
-        '  <div class="trending-info">',
-        '    <div class="trending-title">' + game.name + '</div>',
-        '    <div class="trending-stores">' + storeTags + '</div>',
-        '    <div class="trending-meta-row" style="margin-top: 12px;">',
-        '      <span class="cmp-picker-label" style="text-transform:none; margin-bottom:0;">Metascore:</span>',
-        '      <span class="trending-mc-badge ' + mcClass + '">' + mcDisplay + '</span>',
-        '    </div>',
-        '  </div>',
-        '</div>'
-      ].join("");
-    });
-
-    grid.innerHTML = cardsHtml.join("");
-
-  } catch (err) {
-    console.log("Error fetching trending games:", err);
-    grid.innerHTML = '<p class="cmp-slot-empty-text" style="grid-column: 1 / -1; text-align: center; color: #ff4d4d;">Failed to load trending games. Check your connection.</p>';
-  }
-}
