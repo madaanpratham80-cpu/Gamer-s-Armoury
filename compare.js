@@ -170,8 +170,6 @@ window.addEventListener("DOMContentLoaded", function () {
   
   checkLastCompared();
 
-  
-  tryNotebAPI();
 
 });
 
@@ -179,17 +177,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-async function tryNotebAPI() {
-  try {
-    var res = await fetch("https://noteb.com/?public/api.php", { mode: "cors" });
-    if (!res.ok) throw new Error("not reachable");
-    console.log("Noteb API reachable — using local data as primary source");
-  } catch (err) {
-    console.log("Noteb API unreachable (expected in browser) — using local laptop data");
-  }
-}
 
 
 
